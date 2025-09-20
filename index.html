@@ -1081,7 +1081,6 @@ e. × Ⅲ711 記録されている場合 → 記録されていない場合`
 }
 ];
 
-// ======= 配列シャッフル関数 =======
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -1090,61 +1089,97 @@ function shuffle(array) {
   return array;
 }
 
-// ======= レンダリング =======
 function render() {
   const app = document.getElementById('app');
   app.innerHTML = "";
+  const doShuffle = document.getElementById('shuffle').checked;
 
   DATA.forEach(q => {
-    const card = document.createElement('div');
+    const card = document.createElement('section');
     card.className = 'card';
 
-    // 問題文
     const title = document.createElement('h2');
-    title.textContent = q.title;
+    title.innerHTML = q.title;
     card.appendChild(title);
 
-    // 選択肢
-    let options = [...q.options];
-    const shuffleBox = document.getElementById("shuffle");
-    if (shuffleBox.checked) {
-      options = shuffle(options);
-    }
+    const optionsContainer = document.createElement('div');
+    optionsContainer.className = 'options';
 
-    const optionsDiv = document.createElement('div');
-    optionsDiv.className = 'options';
-    options.forEach(opt => {
+    // 最初にシャッフルして順序を固定
+    let opts = q.options.slice();
+    if (doShuffle) shuffle(opts);
+
+    let answered = false;
+
+    opts.forEach(opt => {
       const btn = document.createElement('button');
-      // ラベル非表示にしたい場合は opt.label + "." を削除
-      btn.textContent = opt.label + "．" + opt.text;
+      btn.textContent = doShuffle ? opt.text : `${opt.label}. ${opt.text}`;
       btn.onclick = () => {
+        if (answered) return;
+        answered = true;
+
+        // 判定
         if (opt.correct) {
           btn.classList.add('correct');
         } else {
           btn.classList.add('incorrect');
         }
-        explanation.style.display = "block";
-      };
-      optionsDiv.appendChild(btn);
-    });
-    card.appendChild(optionsDiv);
 
-    // 解説
+        // 正解も緑表示
+        opts.forEach(o => {
+          if (o.correct && o !== opt) {
+            const btns = optionsContainer.querySelectorAll('button');
+            btns.forEach(b => {
+              if (b.textContent.includes(o.text)) b.classList.add('correct');
+            });
+          }
+        });
+
+        // ★位置はそのままで、a,b,c,d,eを表示
+        const btns = optionsContainer.querySelectorAll('button');
+        btns.forEach((b, i) => {
+          const original = opts[i];  // ←固定された並びに対応
+          b.textContent = `${original.label}. ${original.text}`;
+        });
+
+        explanation.style.display = 'block';
+      };
+      optionsContainer.appendChild(btn);
+    });
+
+    card.appendChild(optionsContainer);
+
     const explanation = document.createElement('div');
     explanation.className = 'explanation';
     explanation.innerHTML = q.explanation_html;
     card.appendChild(explanation);
 
+    const reset = document.createElement('button');
+    reset.className = 'reset-btn';
+    reset.textContent = 'リセット';
+    reset.onclick = () => {
+      answered = false;
+      optionsContainer.querySelectorAll('button').forEach((b,i) => {
+        b.classList.remove('correct','incorrect');
+        b.disabled = false;
+        const original = opts[i];
+        b.textContent = doShuffle ? original.text : `${original.label}. ${original.text}`;
+      });
+      explanation.style.display = 'none';
+    };
+    card.appendChild(reset);
+
     app.appendChild(card);
   });
 }
 
-// ======= イベント登録 =======
-window.onload = render;
-document.getElementById("shuffle").addEventListener("change", render);
+document.getElementById('shuffle').addEventListener('change', render);
+render();
 </script>
 </body>
 </html>
+
+
 
 
 
