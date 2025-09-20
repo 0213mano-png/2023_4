@@ -1,25 +1,24 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>2023年 第2回診療情報管理士模擬試験 専門分野</title>
+<title>2023年 第3回診療情報管理士模擬試験 専門分野</title>
 <style>
   body {
-    background-color: #fdfdfd;     /* 明るい背景 */
-    color: #333;                   /* 少し柔らかい文字色 */
+    background-color: #fdfdfd;
+    color: #333;
     font-family: sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0 1em;
   }
- 
+
   h1, h2, h3 {
     color: #222;
   }
 
   .card {
-    background-color: #ffffff;    /* 白背景のカード */
+    background-color: #ffffff;
     border: 1px solid #ddd;
     border-radius: 12px;
     padding: 1em 1.2em;
@@ -29,16 +28,16 @@
 
   .options {
     display: flex;
-    flex-direction: column;       /* ← 縦並びにする */
-    gap: 0.6em;                    /* ボタン間の余白 */
+    flex-direction: column;
+    gap: 0.6em;
     margin-top: 0.8em;
   }
 
   .options button {
-    width: 100%;                   /* 横幅いっぱいに広げる */
+    width: 100%;
     text-align: left;
     padding: 0.7em;
-    background-color: #eef6ff;     /* 淡いブルー */
+    background-color: #eef6ff;
     color: #333;
     border: 1px solid #cce0ff;
     border-radius: 6px;
@@ -48,15 +47,15 @@
   }
 
   .options button:hover {
-    background-color: #d9ebff;     /* ホバー時に少し濃く */
+    background-color: #d9ebff;
   }
 
   .correct {
-    background-color: #d9ffd9 !important;  /* 正解時の緑 */
+    background-color: #d9ffd9 !important;
   }
 
   .incorrect {
-    background-color: #ffd9d9 !important;  /* 不正解時の赤 */
+    background-color: #ffd9d9 !important;
   }
 
   .explanation {
@@ -72,16 +71,15 @@
     margin-top: 0.8em;
   }
 
-.card h2,
-.card div:first-child {
-  font-size: 18px;   /* ← お好みで 14〜16px 程度に */
-  line-height: 1.5;
-}
-
+  .card h2,
+  .card div:first-child {
+    font-size: 18px;
+    line-height: 1.5;
+  }
 </style>
 </head>
 <body>
-<h1>2023年 第2回診療情報管理士模擬試験 専門分野</h1>
+<h1>2023年 第3回診療情報管理士模擬試験 専門分野</h1>
 <div>
   <p>※回答解説中のⅠ,Ⅱ,ⅢはそれぞれテキストⅠ,Ⅱ,Ⅲを表す</p>
 </div>
@@ -91,6 +89,7 @@
 <div id="app"></div>
 
 <script>
+// ======= 問題データ =======
 const DATA = [
   {
   "id": 1,
@@ -1082,6 +1081,7 @@ e. × Ⅲ711 記録されている場合 → 記録されていない場合`
 }
 ];
 
+// ======= 配列シャッフル関数 =======
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -1090,102 +1090,58 @@ function shuffle(array) {
   return array;
 }
 
+// ======= レンダリング =======
 function render() {
   const app = document.getElementById('app');
   app.innerHTML = "";
-  const doShuffle = document.getElementById('shuffle').checked;
 
   DATA.forEach(q => {
-    const card = document.createElement('section');
+    const card = document.createElement('div');
     card.className = 'card';
 
+    // 問題文
     const title = document.createElement('h2');
-    title.innerHTML = q.title;
+    title.textContent = q.title;
     card.appendChild(title);
 
-    const optionsContainer = document.createElement('div');
-    optionsContainer.className = 'options';
+    // 選択肢
+    let options = [...q.options];
+    const shuffleBox = document.getElementById("shuffle");
+    if (shuffleBox.checked) {
+      options = shuffle(options);
+    }
 
-    // 最初にシャッフルして順序を固定
-    let opts = q.options.slice();
-    if (doShuffle) shuffle(opts);
-
-    let answered = false;
-
-    opts.forEach(opt => {
+    const optionsDiv = document.createElement('div');
+    optionsDiv.className = 'options';
+    options.forEach(opt => {
       const btn = document.createElement('button');
-      btn.textContent = doShuffle ? opt.text : `${opt.label}. ${opt.text}`;
+      // ラベル非表示にしたい場合は opt.label + "." を削除
+      btn.textContent = opt.label + "．" + opt.text;
       btn.onclick = () => {
-        if (answered) return;
-        answered = true;
-
-        // 判定
         if (opt.correct) {
           btn.classList.add('correct');
         } else {
           btn.classList.add('incorrect');
         }
-
-        // 正解も緑表示
-        opts.forEach(o => {
-          if (o.correct && o !== opt) {
-            const btns = optionsContainer.querySelectorAll('button');
-            btns.forEach(b => {
-              if (b.textContent.includes(o.text)) b.classList.add('correct');
-            });
-          }
-        });
-
-        // ★位置はそのままで、a,b,c,d,eを表示
-        const btns = optionsContainer.querySelectorAll('button');
-        btns.forEach((b, i) => {
-          const original = opts[i];  // ←固定された並びに対応
-          b.textContent = `${original.label}. ${original.text}`;
-        });
-
-        explanation.style.display = 'block';
+        explanation.style.display = "block";
       };
-      optionsContainer.appendChild(btn);
+      optionsDiv.appendChild(btn);
     });
+    card.appendChild(optionsDiv);
 
-    card.appendChild(optionsContainer);
-
+    // 解説
     const explanation = document.createElement('div');
     explanation.className = 'explanation';
     explanation.innerHTML = q.explanation_html;
     card.appendChild(explanation);
 
-    const reset = document.createElement('button');
-    reset.className = 'reset-btn';
-    reset.textContent = 'リセット';
-    reset.onclick = () => {
-      answered = false;
-      optionsContainer.querySelectorAll('button').forEach((b,i) => {
-        b.classList.remove('correct','incorrect');
-        b.disabled = false;
-        const original = opts[i];
-        b.textContent = doShuffle ? original.text : `${original.label}. ${original.text}`;
-      });
-      explanation.style.display = 'none';
-    };
-    card.appendChild(reset);
-
     app.appendChild(card);
   });
 }
 
-document.getElementById('shuffle').addEventListener('change', render);
-render();
+// ======= イベント登録 =======
+window.onload = render;
+document.getElementById("shuffle").addEventListener("change", render);
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
