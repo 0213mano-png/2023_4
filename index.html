@@ -2,23 +2,88 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>確認テスト</title>
+<title>2023年 第3回診療情報管理士模擬試験 専門分野</title>
 <style>
-  body { font-family: sans-serif; text-align: left; }
-  .card { border:1px solid #ccc; padding:1em; margin:1em 0; border-radius:8px; }
-  .card h2 { font-size: 16px; margin: 0 0 .5em; }
-  .options { display: grid; gap: .4em; margin-top: .5em; }
-  .options button {
-    font-size: 20px; text-align: left; padding: .5em;
+  body {
+    background-color: #fdfdfd;     /* 明るい背景 */
+    color: #333;                   /* 少し柔らかい文字色 */
+    font-family: sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0 1em;
   }
-  .correct { background:#d9ffd9; }
-  .incorrect { background:#ffd9d9; }
-  .explanation { margin-top: .5em; border-top:1px solid #ccc; padding-top:.5em; display:none; }
-  .reset-btn { margin-top:.5em; }
+ 
+  h1, h2, h3 {
+    color: #222;
+  }
+
+  .card {
+    background-color: #ffffff;    /* 白背景のカード */
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 1em 1.2em;
+    margin: 1.2em 0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  }
+
+  .options {
+    display: flex;
+    flex-direction: column;       /* ← 縦並びにする */
+    gap: 0.6em;                    /* ボタン間の余白 */
+    margin-top: 0.8em;
+  }
+
+  .options button {
+    width: 100%;                   /* 横幅いっぱいに広げる */
+    text-align: left;
+    padding: 0.7em;
+    background-color: #eef6ff;     /* 淡いブルー */
+    color: #333;
+    border: 1px solid #cce0ff;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .options button:hover {
+    background-color: #d9ebff;     /* ホバー時に少し濃く */
+  }
+
+  .correct {
+    background-color: #d9ffd9 !important;  /* 正解時の緑 */
+  }
+
+  .incorrect {
+    background-color: #ffd9d9 !important;  /* 不正解時の赤 */
+  }
+
+  .explanation {
+    margin-top: 0.8em;
+    border-top: 1px solid #ddd;
+    padding-top: 0.6em;
+    display: none;
+    background: #f8f8f8;
+    border-radius: 6px;
+  }
+
+  .reset-btn {
+    margin-top: 0.8em;
+  }
+
+.card h2,
+.card div:first-child {
+  font-size: 18px;   /* ← お好みで 14〜16px 程度に */
+  line-height: 1.5;
+}
+
 </style>
 </head>
 <body>
-<h1>確認テスト</h1>
+<h1>2023年 第3回診療情報管理士模擬試験 専門分野</h1>
+<div>
+  <p>※回答解説中のⅠ,Ⅱ,ⅢはそれぞれテキストⅠ,Ⅱ,Ⅲを表す</p>
+</div>
 <div>
   <label><input type="checkbox" id="shuffle"> 選択肢をシャッフルする（最初は a,b,c,d,e 非表示）</label>
 </div>
@@ -27,1055 +92,997 @@
 <script>
 const DATA = [
   {
-    "id": 1,
-    "title": "問1. 医療資源（物的資源）について、まちがっている組み合わせを1つ選びなさい。",
-    "options": [
-      { "label": "a", "text": "市町村保健センター ー 保健施設", "correct": false },
-      { "label": "b", "text": "調剤薬局 ー 医療施設", "correct": false },
-      { "label": "c", "text": "助産所 ー 保健施設", "correct": true },
-      { "label": "d", "text": "診療所 ー 医療施設", "correct": false },
-      { "label": "e", "text": "ケアハウス ー 介護福祉施設", "correct": false }
-    ],
-    "explanation_html": `
-✅ 正解：c「助産所 ー 保健施設」<br>
-・a：〇（Ⅲ6）<br>
+  "id": 1,
+  "title": "問1. 医療資源（物的資源）について、正しいものを1つ選びなさい。",
+  "options": [
+    { "label": "a", "text": "保健所は、医療施設である", "correct": false },
+    { "label": "b", "text": "健康増進施設は、医療施設である", "correct": true },
+    { "label": "c", "text": "介護老人保健施設は、保健施設である", "correct": false },
+    { "label": "d", "text": "介護老人福祉施設は、保健施設である", "correct": false },
+    { "label": "e", "text": "訪問看護ステーションは、保健施設である", "correct": false }
+  ],
+  "explanation_html": `
+✅ 正解：b「健康増進施設は、医療施設である」<br>
+・a：× 医療施設 → 保健施設<br>
 ・b：〇（Ⅲ6）<br>
-・c：× 助産所 → 医療施設（Ⅲ6）<br>
-・d：〇（Ⅲ6）<br>
-・e：〇（Ⅲ6）`
-  },
-  {
-    "id": 2,
-    "title": "問2. 医療保障について、正しいものを1つ選びなさい。",
-    "options": [
-      { "label": "a", "text": "すべての国民は、公的医療保険に強制加入させられている", "correct": true },
-      { "label": "b", "text": "医療保険制度は、国による一元的な制度である", "correct": false },
-      { "label": "c", "text": "後期高齢者は、70歳以上である", "correct": false },
-      { "label": "d", "text": "健康保険法によるものは、健康保険組合が運営するものと船員保険の2つがある", "correct": false },
-      { "label": "e", "text": "交通事故は、すべて公費医療が適用される", "correct": false }
-    ],
-    "explanation_html": `
-✅ 正解：a「すべての国民は、公的医療保険に強制加入させられている」<br>
-・a：〇（Ⅲ24）<br>
-・b：× 複数の保険制度が並立している（Ⅲ25）<br>
-・c：× 70歳以上 → 75歳以上（Ⅲ26）<br>
-・d：× 船員保険 → 全国健康保険協会（協会けんぽ）が運営するもの（Ⅲ26）<br>
-・e：× 公費医療のほか、医療保険、自動車損害賠償責任保険、任意加入（傷病）保険などが適用される（Ⅲ30）`
-  },
-  {
-    "id": 3,
-    "title": "問3. 医療計画について、正しいものを1つ選びなさい。",
-    "options": [
-      { "label": "a", "text": "日常生活圏は、3次医療圏である", "correct": false },
-      { "label": "b", "text": "1次医療圏内の一般病床数を、基準病床数として定める", "correct": false },
-      { "label": "c", "text": "医療計画は、少なくとも3年ごとに見直しを行う", "correct": false },
-      { "label": "d", "text": "5事業については、急性期から維持期への病期ごとの医療機能を記載する", "correct": false },
-      { "label": "e", "text": "5疾病については、治療または予防に係る事業に関する事項を記載する", "correct": true }
-    ],
-    "explanation_html": `
-✅ 正解：e「5疾病については、治療または予防に係る事業に関する事項を記載する」<br>
-・a：× 3次 → 2次（Ⅲ47）<br>
-・b：× 1次 → 2次（Ⅲ47）<br>
-・c：× 3年 → 6年（2018年より）（Ⅲ48）<br>
-・d：× 5事業 → 5疾病（脳卒中の場合）（Ⅲ48）<br>
-・e：〇（Ⅲ47）`
-  },
-  {
+・c：× 保健施設 → 医療施設、介護福祉施設<br>
+・d：× 保健施設 → 介護福祉施設<br>
+・e：× 保健施設 → 医療施設`
+},
+ {
+  "id": 2,
+  "title": "問2. 医療レベルについて、正しいものを1つ選びなさい。",
+  "options": [
+    { "label": "a", "text": "一次医療 ― 大学病院、特定機能病院", "correct": false },
+    { "label": "b", "text": "二次医療 ― 外来医療（通院）", "correct": false },
+    { "label": "c", "text": "一次医療 ― 無床診療所", "correct": false },
+    { "label": "d", "text": "二次医療 ― プライマリ・ケア", "correct": false },
+    { "label": "e", "text": "三次医療 ― 救急救命センター", "correct": true }
+  ],
+  "explanation_html": `
+✅ 正解：e「三次医療 ― 救急救命センター」<br>
+・a：× 一次医療 → 三次医療<br>
+・b：× 二次医療 → 一次医療<br>
+・c：× 三次医療 → 一次医療<br>
+・d：× 二次医療 → 一次医療<br>
+・e：〇（Ⅲ43）`
+},
+ {
+  "id": 3,
+  "title": "問3. 健康増進法と特定健康診査について、正しいものを1つ選びなさい。",
+  "options": [
+    { "label": "a", "text": "健康増進法は、特定健康診査を推進するための法律である", "correct": false },
+    { "label": "b", "text": "健康増進法は、学校・官公庁等における受動喫煙の防止を義務付けている", "correct": true },
+    { "label": "c", "text": "特定健康診査は、40歳以上の全ての医療保険加入者が対象である", "correct": false },
+    { "label": "d", "text": "特定健康診査は、皮下脂肪型肥満に着目した生活習慣病予防を行うことが目的である", "correct": false },
+    { "label": "e", "text": "特定保健指導を実施するのは、医師、看護師である", "correct": false }
+  ],
+  "explanation_html": `
+✅ 正解：b「健康増進法は、学校・官公庁等における受動喫煙の防止を義務付けている」<br>
+・a：× 特定健康診査 → 健康日本21（Ⅲ56）<br>
+・b：〇（Ⅲ57）<br>
+・c：× 40歳以上の全て → 40〜74歳（Ⅲ58）<br>
+・d：× 皮下脂肪型 → 内臓脂肪型（Ⅲ58）<br>
+・e：× 医師、看護師 → 医師、保健師、管理栄養士など（Ⅲ59）`
+},
+ {
   "id": 4,
-  "title": "問4. 介護保険法について、まちがっているものを1つ選びなさい。",
+  "title": "問4. 医療従事者の職種と業務について、正しいものを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "要支援は2段階である", "correct": false },
-    { "label": "b", "text": "要介護は5段階である", "correct": false },
-    { "label": "c", "text": "介護予防サービス計画に従い、介護給付を受けることができる", "correct": true },
-    { "label": "d", "text": "第1号被保険者は、65歳以上である", "correct": false },
-    { "label": "e", "text": "介護施設入所者の食費・居住費は、全額自己負担である", "correct": false }
+    { "label": "a", "text": "救急救命士は、自らの判断で救急救命処置を行う", "correct": false },
+    { "label": "b", "text": "保健師は、生命維持管理装置を用いた保健指導および保健の検査を行う", "correct": false },
+    { "label": "c", "text": "理学療法士は、応用的動作能力や社会的適応能力の回復のための作業を行わせる", "correct": false },
+    { "label": "d", "text": "管理栄養士は、国家資格である", "correct": true },
+    { "label": "e", "text": "医療ソーシャルワーカーは、要介護者の状況に応じてケアプランを作成する", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：c「介護予防サービス計画に従い、介護給付を受けることができる」<br>
-・a：〇（Ⅲ53）<br>
-・b：〇（Ⅲ53）<br>
-・c：× 介護予防サービス計画 → 居宅サービス計画（ケアプラン）、施設サービス計画（Ⅲ53）<br>
-・d：〇（Ⅲ54）<br>
-・e：〇（Ⅲ54）`
+  "explanation_html": `✅ 正解：d「管理栄養士は、国家資格である」<br>
+・a：× 自らの判断で → 医師の指示の下（Ⅲ62）<br>
+・b：× 臨床検査技師 → 臨床工学技士（Ⅲ63）<br>
+・c：× 理学療法士 → 作業療法士（Ⅲ63）<br>
+・d：〇<br>
+・e：× 医療ソーシャルワーカー → 介護支援専門員（ケアマネージャー）（Ⅲ63）`
 },
-  {
+ {
   "id": 5,
-  "title": "問5. 病院の経営管理について、正しいものを1つ選びなさい。",
+  "title": "問5. 病院の会計基準について、正しい組み合わせを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "プロセスは、投入された資源に付加価値をつけた成果に対する経過である", "correct": true },
-    { "label": "b", "text": "医療に携わる医師の満足を得るために、マネジメントが重要である", "correct": false },
-    { "label": "c", "text": "PDCAサイクルのCは、Capacityのことである", "correct": false },
-    { "label": "d", "text": "PDCAサイクルのAは、Accountのことである", "correct": false },
-    { "label": "e", "text": "病院が収益の分配をすることは、禁じられていない", "correct": false }
+    { "label": "a", "text": "医療法人病院 ― 病院会計準則（医療法人会計基準）", "correct": true },
+    { "label": "b", "text": "国立大学病院 ― 独立行政法人会計基準", "correct": false },
+    { "label": "c", "text": "学校法人病院 ― 公益法人会計基準", "correct": false },
+    { "label": "d", "text": "公立病院 ― 独立行政法人会計基準", "correct": false },
+    { "label": "e", "text": "企業経営病院 ― 病院会計準則（医療法人会計基準）", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：a「プロセスは、投入された資源に付加価値をつけた成果に対する経過である」<br>
-・a：〇（Ⅲ70）<br>
-・b：× 医師 → 患者（Ⅲ70）<br>
-・c：× Capacity → Check（Ⅲ71）<br>
-・d：× Account → Action（Ⅲ71）<br>
-・e：× 病院による収益分配は禁じられている（Ⅲ71）`
+  "explanation_html": `✅ 正解：a「医療法人病院 ― 病院会計準則（医療法人会計基準）」<br>
+・a：〇（Ⅲ81）<br>
+・b：× 独立行政法人会計基準 → 国立大学法人会計基準<br>
+・c：× 公益法人会計基準 → 学校法人会計基準<br>
+・d：× 独立行政法人会計基準 → 公益法人会計基準<br>
+・e：× 病院会計準則（医療法人会計基準） → 企業会計の基準`
 },
-  {
+ {
   "id": 6,
-  "title": "問6. 病院組織について、まちがっているものを1つ選びなさい。",
+  "title": "問6. 経営計画について、まちがっている組み合わせを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "現在の病院組織は、ライン・スタッフ型を基本としたものである", "correct": false },
-    { "label": "b", "text": "チーム医療は、垂直連携である", "correct": true },
-    { "label": "c", "text": "水平的組織においては、専門的権威が支配する", "correct": false },
-    { "label": "d", "text": "組織は、目的達成の手段である", "correct": false },
-    { "label": "e", "text": "専門的権威は、管理的権限に対して優越しない", "correct": false }
+    { "label": "a", "text": "利益計画 ― 収入計画", "correct": false },
+    { "label": "b", "text": "費用計画 ― 収入計画", "correct": false },
+    { "label": "c", "text": "設備投資 ― 資金計画", "correct": false },
+    { "label": "d", "text": "目標利益額 ― 資金計画", "correct": true },
+    { "label": "e", "text": "固定資産取得 ― 資金計画", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：b「チーム医療は、垂直連携である」<br>
-・a：〇（Ⅲ74）<br>
-・b：× 垂直連携 → 水平連携（Ⅲ77）<br>
-・c：〇（Ⅲ77）<br>
-・d：〇（Ⅲ78）<br>
-・e：〇（Ⅲ78）`
+  "explanation_html": `✅ 正解：d「目標利益額 ― 資金計画」<br>
+・a：〇<br>
+・b：〇<br>
+・c：〇<br>
+・d：× 資金計画 → 収入計画（Ⅲ82）<br>
+・e：〇`
 },
-  {
+ {
   "id": 7,
-  "title": "問7. 医療管理について、正しいものを1つ選びなさい。",
+  "title": "問7. 医療機関の管理資料について、正しい組み合わせを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "医師の資格がなくても、病院管理者にはなれる", "correct": false },
-    { "label": "b", "text": "主治医とは、受持医の診療方針を代行する医師である", "correct": false },
-    { "label": "c", "text": "担当医は、担当患者の診療に全責任を負う", "correct": false },
-    { "label": "d", "text": "病院に看護記録を備える義務は、医療法に規定されている", "correct": true },
-    { "label": "e", "text": "専門看護師は、厚生労働省が認定する資格である", "correct": false }
+    { "label": "a", "text": "職員統計 ― 病床利用率", "correct": false },
+    { "label": "b", "text": "医療統計 ― 手術件数", "correct": true },
+    { "label": "c", "text": "市場調査 ― 診療報酬額", "correct": false },
+    { "label": "d", "text": "業務統計 ― 出勤率", "correct": false },
+    { "label": "e", "text": "医事データ ― 収益費用効率", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：d「病院に看護記録を備える義務は、医療法に規定されている」<br>
-・a：× なれる → なれない（Ⅲ93）<br>
-・b：× 受持医・担当医が主治医の診療方針を代行する（Ⅲ95）<br>
-・c：× 担当医 → 主治医（Ⅲ95）<br>
-・d：〇（Ⅲ101）<br>
-・e：× 厚生労働省 → 日本看護協会（Ⅲ102）`
+  "explanation_html": `✅ 正解：b「医療統計 ― 手術件数」<br>
+・a：× 職員統計 → 医事データに基づく統計（Ⅲ84）<br>
+・b：〇<br>
+・c：× 市場調査 → 医事データに基づく統計（Ⅲ84）<br>
+・d：× 業務統計 → 職員統計（Ⅲ84）<br>
+・e：× 医事データ → 財務統計（Ⅲ84）`
 },
-  {
+ {
   "id": 8,
-  "title": "問8. 医療保険制度について、正しいものを1つ選びなさい。",
+  "title": "問8. 次のうち、保険適用外診療ではないものを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "公的扶助と社会保険は、税金が財源である", "correct": false },
-    { "label": "b", "text": "入院時食事療養費と埋葬料は、医療給付である", "correct": false },
-    { "label": "c", "text": "衛生材料と医療材料は、患者から費用を徴収する", "correct": false },
-    { "label": "d", "text": "予防接種と正常分娩は、保険診療である", "correct": false },
-    { "label": "e", "text": "自由診療では、保険給付を受けることができない", "correct": true }
+    { "label": "a", "text": "通常のあざ・にきび", "correct": false },
+    { "label": "b", "text": "健康診断", "correct": false },
+    { "label": "c", "text": "予防接種", "correct": false },
+    { "label": "d", "text": "冷暖房費", "correct": true },
+    { "label": "e", "text": "正常妊娠・正常分娩", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：e「自由診療では、保険給付を受けることができない」<br>
-・a：× 社会保険は社会保険料を財源とする（Ⅲ127）<br>
-・b：× 埋葬料は現金給付（Ⅲ128-129）<br>
-・c：× 徴収する → 徴収できない（Ⅲ130）<br>
-・d：× 保険診療 → 保険適用外診療（Ⅲ130）<br>
-・e：〇（Ⅲ130）`
+  "explanation_html": `✅ 正解：d「冷暖房費」<br>
+・a：× 保険適用外診療<br>
+・b：× 保険適用外診療<br>
+・c：× 保険適用外診療<br>
+・d：〇 保険適用外診療ではない（Ⅲ130）<br>
+・e：× 保険適用外診療`
 },
  {
   "id": 9,
-  "title": "問9. 評価療養と選定療養について、正しい組み合わせを1つ選びなさい。",
+  "title": "問9. 保険診療について、まちがっているものを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "差額ベット　―　評価療養", "correct": false },
-    { "label": "b", "text": "先進医療　―　評価療養", "correct": true },
-    { "label": "c", "text": "時間外診療　―　評価療養", "correct": false },
-    { "label": "d", "text": "大病院の初診　―　評価療養", "correct": false },
-    { "label": "e", "text": "治験の診療　―　選定療養", "correct": false }
+    { "label": "a", "text": "医師国家試験に合格すると、厚生労働大臣名で医師免許証が交付される", "correct": false },
+    { "label": "b", "text": "医療機関は、地方厚生局に保険医療機関の申請を行う", "correct": false },
+    { "label": "c", "text": "保険医登録されなければ、医療行為を行うことができない", "correct": true },
+    { "label": "d", "text": "保険医は規則を守ることで、診療報酬を請求する権利が生じる", "correct": false },
+    { "label": "e", "text": "療養担当規則には、療養の給付の担当に関する帳簿等を完結の日から3年間保存することと定められている", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：b「先進医療 ― 評価療養」<br>
-・a：× 選定療養（Ⅲ132）<br>
-・b：〇（Ⅲ132）<br>
-・c：× 選定療養（Ⅲ132）<br>
-・d：× 選定療養（Ⅲ132）<br>
-・e：× 評価療養（Ⅲ132）`
+  "explanation_html": `✅ 正解：c「保険医登録されなければ、医療行為を行うことができない」<br>
+・a：〇（Ⅲ133）<br>
+・b：〇（Ⅲ133）<br>
+・c：× 保険医登録→医師免許の取得（Ⅲ133）<br>
+・d：〇（Ⅲ134）<br>
+・e：〇（Ⅲ137）`
 },
-  {
+ {
   "id": 10,
-  "title": "問10. 診療報酬の請求について、まちがっているものを1つ選びなさい。",
+  "title": "問10. 診療報酬の改定について、正しいものを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "診療報酬の単価は、1点10円である", "correct": false },
-    { "label": "b", "text": "レセプトは翌月10日までに審査支払機関に提出し、診療報酬を請求する", "correct": false },
-    { "label": "c", "text": "診療報酬の請求権の時効は、民法に定められている", "correct": false },
-    { "label": "d", "text": "審査の結果、記載不備などで審査決定ができないレセプトは、査定がなされる", "correct": true },
-    { "label": "e", "text": "審査内容に異議がある場合、保険医療機関は再審査請求をすることができる", "correct": false }
+    { "label": "a", "text": "5年に1度、大幅に改訂される", "correct": false },
+    { "label": "b", "text": "診療報酬点数の改定率は、厚生労働大臣が決定する", "correct": false },
+    { "label": "c", "text": "診療報酬改定については、厚生労働大臣が社会保障審議会に諮問する", "correct": false },
+    { "label": "d", "text": "使用薬剤の薬価は、診療報酬点数表に示されている", "correct": false },
+    { "label": "e", "text": "改訂内容が示された後、疑義解釈が追加通知される", "correct": true }
   ],
-  "explanation_html": `
-✅ 正解：d「審査の結果、記載不備などで審査決定ができないレセプトは、査定がなされる」<br>
-・a：〇（Ⅲ150）<br>
-・b：〇（Ⅲ151）<br>
-・c：〇（Ⅲ151）<br>
-・d：× 査定 → 返戻（Ⅲ152）<br>
-・e：〇（Ⅲ152）`
+  "explanation_html": `✅ 正解：e「改訂内容が示された後、疑義解釈が追加通知される」<br>
+・a：× 5年 → 2年（Ⅲ138）<br>
+・b：× 厚労大臣 → 内閣（Ⅲ138）<br>
+・c：× 社会保障審議会 → 中医協（Ⅲ138）<br>
+・d：× 薬剤は薬価基準、材料は材料価格基準に示される（Ⅲ138）<br>
+・e：〇（Ⅲ138）`
 },
  {
   "id": 11,
-  "title": "問11. DPCについて、まちがっているものを1つ選びなさい。",
+  "title": "問11. 医療費の支払いについて、正しいものを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "3層構造により構成されている", "correct": false },
-    { "label": "b", "text": "医療資源を最も投入した傷病名とは、入院期間中に最も人的・物的医療資源を投入した傷病名のことである", "correct": false },
-    { "label": "c", "text": "最初の6桁は、傷病名である", "correct": false },
-    { "label": "d", "text": "第Ⅲ日まで は、出来高支払いが適用される", "correct": true },
-    { "label": "e", "text": "機能評価係数Ⅰは、施設基準を評価したものである", "correct": false }
+    { "label": "a", "text": "審査支払機関は、被保険者に対する現金給付と保険料の徴収を行う", "correct": false },
+    { "label": "b", "text": "医療保険制度における診療報酬は、支払基金に対して請求する", "correct": false },
+    { "label": "c", "text": "レセプトの作成は、入院と外来に分け、入院は1入院ごと、外来は1診療ごとに行う", "correct": false },
+    { "label": "d", "text": "保険者番号は、社会保険8桁、国民健康保険6桁である", "correct": true },
+    { "label": "e", "text": "診療報酬制度は、原則的に定額払い方式である", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：d「第Ⅲ日まで は、出来高支払いが適用される」<br>
-・a：〇（Ⅲ157）<br>
-・b：〇（Ⅲ158）<br>
-・c：〇（Ⅲ159）<br>
-・d：× 第Ⅲ日まで → 第Ⅲ日から（Ⅲ167）<br>
-・e：〇（Ⅲ168）`
-},
+  "explanation_html": `✅ 正解：d「保険者番号は、社会保険8桁、国民健康保険6桁である」<br>
+・a：×（Ⅲ144）審査支払機関 → 保険者。審査支払機関は、保険者の委託を受けて請求内容の審査や支払いを行う。<br>
+・b：×（Ⅲ144）支払基金→国保連合会<br>
+・c：×（Ⅲ145）入院は1入院ごと、外来は1診療ごと → 実際には1か月分ごとにまとめて作成する。<br>
+・d：〇（Ⅲ147）<br>
+・e：×（Ⅲ153）定額払い→個別出来高払い。`
+}
+,
  {
   "id": 12,
-  "title": "問12. ヒューマンエラー対策について、正しいものを1つ選びなさい。",
+  "title": "問12. 医療機関で把握すべきリスクについて、まちがっている組み合わせを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "ヒューマンエラーは、全く意図していないのに発生する人間ミスである", "correct": false },
-    { "label": "b", "text": "ヒューマンエラーは、努力によって減らすべきである", "correct": false },
-    { "label": "c", "text": "医療安全の研修会は、効果が薄い", "correct": true },
-    { "label": "d", "text": "人による確認を重ねることで、ヒューマンエラーを防ぐことができる", "correct": false },
-    { "label": "e", "text": "誤操作の場合に常に安全側に制御するのは、フールプルーフである", "correct": false }
+    { "label": "a", "text": "人的要因（外部） ― 職員の誘拐", "correct": false },
+    { "label": "b", "text": "人的要因（内部） ― 機密漏洩", "correct": false },
+    { "label": "c", "text": "社会的要因 ― 環境問題", "correct": false },
+    { "label": "d", "text": "自然災害 ― 火災", "correct": true },
+    { "label": "e", "text": "事故 ― 環境汚染", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：c「医療安全の研修会は、効果が薄い」<br>
-・a：× 意図的なヒューマンエラーもある（Ⅲ193-194）<br>
-・b：× 努力 → システム（Ⅲ194）<br>
-・c：〇（Ⅲ196）<br>
-・d：× 防ぐことができる → 検出する率は高くない（Ⅲ196）<br>
-・e：× フールプルーフ → フェイルセーフ（Ⅲ197）`
+  "explanation_html": `✅ 正解：d「自然災害 ― 火災」<br>
+・a：〇（Ⅲ189）<br>
+・b：〇（Ⅲ189）<br>
+・c：〇（Ⅲ189）<br>
+・d：× 自然災害 → 事故（Ⅲ189）<br>
+・e：〇（Ⅲ189）`
 },
  {
   "id": 13,
-  "title": "問13. 医療事故について、まちがっているものを1つ選びなさい。",
+  "title": "問13. 医療従事者の義務として、正しいものを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "医療事故と医療過誤は、別物である", "correct": false },
-    { "label": "b", "text": "医療事故を契機に裁判が起こったものが、維持紛争である", "correct": true },
-    { "label": "c", "text": "リスクマネージャーの配置が義務付けられている", "correct": false },
-    { "label": "d", "text": "事故に関係する診療記録が改ざんされた場合、文書不実記載である", "correct": false },
-    { "label": "e", "text": "ハインリッヒの法則は、労働災害における経験則である", "correct": false }
+    { "label": "a", "text": "医療行為の結果をあらかじめ見通す義務は、回避義務である", "correct": false },
+    { "label": "b", "text": "守秘義務がかれられているのは、医師のみである", "correct": false },
+    { "label": "c", "text": "正当な理由のない限り診療を拒否できないのは、応召義務である", "correct": true },
+    { "label": "d", "text": "説明義務違反で訴訟される事例は、近年少なくなってきている", "correct": false },
+    { "label": "e", "text": "緊急事態においては、重大な過失があっても免責となる", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：b「医療事故を契機に裁判が起こったものが、維持紛争である」<br>
-・a：〇（Ⅲ198-199）<br>
-・b：× 医事紛争がすべて裁判になるわけではない（Ⅲ198）<br>
-・c：〇（Ⅲ200）<br>
-・d：〇（Ⅲ198）<br>
-・e：〇（Ⅲ200）`
+  "explanation_html": `✅ 正解：c「正当な理由のない限り診療を拒否できないのは、応召義務である」<br>
+・a：× 回避義務 → 予見義務（Ⅲ203）<br>
+・b：× 医師のみ → その他の病院関係者も含む（Ⅲ203）<br>
+・c：〇（Ⅲ203）<br>
+・d：× 少なく → 多く（Ⅲ203）<br>
+・e：× 重大な過失があっても → 最善を尽くし、重大な過失が無ければ（Ⅲ203）`
 },
  {
   "id": 14,
-  "title": "問14. 医療の質マネジメントシステムについて、正しいものを1つ選びなさい。",
+  "title": "問14. 責任の形態について、正しいものを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "EBMは、過程に関する評価である", "correct": false },
-    { "label": "b", "text": "医療機能評価機構の病院機能評価は、成果に関する評価である", "correct": false },
-    { "label": "c", "text": "立入検査は医療法に規定されており、1年に1回以上行われる", "correct": true },
-    { "label": "d", "text": "クリニカルパスは、最新の臨床研究から得られた証拠を基礎とする", "correct": false },
-    { "label": "e", "text": "QIは、臨床評価指標のことである", "correct": false }
+    { "label": "a", "text": "過失はすべて、刑事責任を問われる", "correct": false },
+    { "label": "b", "text": "債務不履行責任、不法行為責任は、刑事責任である", "correct": false },
+    { "label": "c", "text": "医療従事者による医療事故において、雇用者は責任を負わない", "correct": false },
+    { "label": "d", "text": "業務上過失致死傷は、刑事責任を問われる", "correct": true },
+    { "label": "e", "text": "免許取り消しや損害賠償は、行政責任である", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：c「立入検査は医療法に規定されており、1年に1回以上行われる」<br>
-・a：× 過程 → 成果（Ⅲ214）<br>
-・b：× 成果 → 過程・構造（Ⅲ214）<br>
-・c：〇（Ⅲ214）<br>
-・d：× クリニカルパス → EBM。クリニカルパスは疾患別のタイムスケジュールにしたがって治療を実施する方法（Ⅲ215）<br>
-・e：× QI → CI。QIは「医療の質指標」（Ⅲ216, Ⅲ547）`
+  "explanation_html": `✅ 正解：d「業務上過失致死傷は、刑事責任を問われる」<br>
+・a：× 過失に伴う法的責任は、民事、刑事、行政の観点がある（Ⅲ203）<br>
+・b：× 刑事 → 民事（Ⅲ203）<br>
+・c：× 責任を負わない → 使用者責任を負う（Ⅲ204）<br>
+・d：〇（Ⅲ203-204）<br>
+・e：× 損害賠償は民事責任（Ⅲ204）`
 },
  {
   "id": 15,
-  "title": "問15. データの活用について、まちがっているものを1つ選びなさい。",
+  "title": "問15. 病院情報の公表内容として、まちがっているものを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "マーケティングの目的は、企業の商品を消費者が認知し、購入に結びつけることである", "correct": false },
-    { "label": "b", "text": "患者満足度調査と利用者のクチコミの間には、大きな差が生じる場合がある", "correct": false },
-    { "label": "c", "text": "地域連携型マーケティングは、自院の果たす役割を明確にし、その達成をめざす", "correct": false },
-    { "label": "d", "text": "NDBは、全国がん登録制度によるデータのデータベースである", "correct": true },
-    { "label": "e", "text": "患者調査は、医療機関の記入した調査票に基づいて集計される", "correct": false }
+    { "label": "a", "text": "年齢階級別退院患者数", "correct": false },
+    { "label": "b", "text": "診療科別症例の多いものから3つ", "correct": false },
+    { "label": "c", "text": "初発の5大癌のUICC病期分類およびに再発患者数", "correct": false },
+    { "label": "d", "text": "院内肺炎の重症度別患者数等", "correct": true },
+    { "label": "e", "text": "脳梗塞のICD10別患者数", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：d「NDBは、全国がん登録制度によるデータのデータベースである」<br>
-・a：〇（Ⅲ229）<br>
-・b：〇（Ⅲ231）<br>
-・c：〇（Ⅲ231）<br>
-・d：× 全国がん登録制度によるデータ → レセプト情報・特定健診等（Ⅲ234）<br>
-・e：〇（Ⅲ234）`
+  "explanation_html": `✅ 正解：d「院内肺炎の重症度別患者数等」<br>
+・a：〇（Ⅲ219）<br>
+・b：〇（Ⅲ219）<br>
+・c：〇（Ⅲ219）<br>
+・d：× 院内肺炎 → 成人市中肺炎（Ⅲ219）<br>
+・e：〇（Ⅲ219）`
 },
  {
   "id": 16,
-  "title": "問16. 情報の概念について、正しい組み合わせを1つ選びなさい。",
+  "title": "問16. 情報とデータについて、正しいものを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "情報　―　行動の選択", "correct": true },
-    { "label": "b", "text": "データ　―　主観的", "correct": false },
-    { "label": "c", "text": "情報　―　記号", "correct": false },
-    { "label": "d", "text": "データ　―　意思決定", "correct": false },
-    { "label": "e", "text": "情報　―　一義的", "correct": false }
+    { "label": "a", "text": "英語のinformは、「情報を追求演繹」 の意味である", "correct": false },
+    { "label": "b", "text": "データが解釈されていないものを「情報」といい、「情報」である", "correct": false },
+    { "label": "c", "text": "受け手が意思決定や行動の選択を促すのは、「データ」である", "correct": false },
+    { "label": "d", "text": "主観的な意味があるのは、「情報」である", "correct": true },
+    { "label": "e", "text": "「情報」を加工し、解釈や価値を与えたものが「データ」である", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：a「情報 ― 行動の選択」<br>
-・a：〇（Ⅲ244）<br>
-・b：× データ → 情報（Ⅲ244）<br>
-・c：× 情報 → データ（Ⅲ244）<br>
-・d：× データ → 情報（Ⅲ244）<br>
-・e：× 情報 → データ（Ⅲ244）`
+  "explanation_html": `✅ 正解：d「主観的な意味があるのは、『情報』である」<br>
+・a：× 「情報を運ぶ媒体」 → 「知らせる」（Ⅲ243）<br>
+・b：× 「情報」ではなく「データ」（Ⅲ243）<br>
+・c：× 「データ」→「情報」（Ⅲ244）<br>
+・d：〇（Ⅲ243-244）<br>
+・e：× 「データ」を加工したものが「情報」（Ⅲ244）`
 },
  {
   "id": 17,
-  "title": "問17. 医療情報の種類について、まちがっている組み合わせを1つ選びなさい。",
+  "title": "問17. 情報セキュリティについて、正しいものを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "心電図　―　生体情報", "correct": false },
-    { "label": "b", "text": "検体検査情報　―　症候的情報", "correct": true },
-    { "label": "c", "text": "診断情報　―　判断的情報", "correct": false },
-    { "label": "d", "text": "身体所見　―　症候的情報", "correct": false },
-    { "label": "e", "text": "予後情報　―　判断的情報", "correct": false }
+    { "label": "a", "text": "アクセスを認可された者だけが情報にアクセスできることは、真正性である", "correct": false },
+    { "label": "b", "text": "認可された利用者が、必要なときに情報および関連する資産にアクセスできることは、見読性である", "correct": false },
+    { "label": "c", "text": "作成の所在地を明確にすることは、保存性である", "correct": false },
+    { "label": "d", "text": "情報および処理方法が正確であることは、完全性である", "correct": true },
+    { "label": "e", "text": "法令に定める保存期間内、復元可能な状態で保存することは、可用性である", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：b「検体検査情報 ― 症候的情報」<br>
-・a：〇（Ⅲ248）<br>
-・b：× 症候的情報 → 全体情報（Ⅲ248）<br>
-・c：〇（Ⅲ249）<br>
-・d：〇（Ⅲ250）<br>
-・e：〇（Ⅲ250）`
+  "explanation_html": `✅ 正解：d「情報および処理方法が正確であることは、完全性である」<br>
+・a：× 真正性 → 機密性（Ⅲ253,299）<br>
+・b：× 見読性 → 可用性（Ⅲ253,299）<br>
+・c：× 保存性 → 真正性（Ⅲ253,299）<br>
+・d：〇（Ⅲ253,299）<br>
+・e：× 可用性 → 保存性（Ⅲ253,299）`
 },
  {
   "id": 18,
-  "title": "問18. 診療情報の種類について、まちがっている組み合わせを1つ選びなさい。",
+  "title": "問18. 医療情報分野の略語について、まちがっているものを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "コード情報　―　ICD-10", "correct": false },
-    { "label": "b", "text": "数値情報　―　体重", "correct": false },
-    { "label": "c", "text": "テキスト情報　―　看護記録", "correct": false },
-    { "label": "d", "text": "図形情報　―　X線写真", "correct": true },
-    { "label": "e", "text": "波形情報　―　心電図", "correct": false }
+    { "label": "a", "text": "一般的な電子認証をささえる仕組みは、PKIである", "correct": false },
+    { "label": "b", "text": "複数の医療機関で共有される電子的な保健医療情報は、HPKIである", "correct": true },
+    { "label": "c", "text": "病院情報システムに蓄積される診療情報は、EMRである", "correct": false },
+    { "label": "d", "text": "個人の保健医療福祉に関する情報を統合して蓄積したものは、EHRである", "correct": false },
+    { "label": "e", "text": "個人の健康情報を個人が収集管理するのは、PHRである", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：d「図形情報 ― X線写真」<br>
-・a：〇（Ⅲ249）<br>
-・b：〇（Ⅲ250）<br>
-・c：〇（Ⅲ250）<br>
-・d：× 図形情報 → 画像情報（Ⅲ249-250）<br>
-・e：〇（Ⅲ250）`
+  "explanation_html": `✅ 正解：b「複数の医療機関で共有される電子的な保健医療情報は、HPKIである」<br>
+・a：〇（Ⅲ284）<br>
+・b：× HPKI → EHR。HPKIは保健医療福祉分野で使用されるPKI（公開鍵基盤）（Ⅲ284,533）<br>
+・c：〇（Ⅲ289,533）<br>
+・d：〇（Ⅲ289,533）<br>
+・e：〇（Ⅲ289,533）`
 },
  {
   "id": 19,
-  "title": "問19. 病院の各部門システムについて、正しい組み合わせを1つ選びなさい。",
+  "title": "問19. 診療情報の二次利用について、まちがっているものを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "医事部門　―　統計作成", "correct": true },
-    { "label": "b", "text": "臨床検査部門　―　RIS，PACS", "correct": false },
-    { "label": "c", "text": "放射線部門　―　勤怠管理", "correct": false },
-    { "label": "d", "text": "診療情報管理部門　―　外来／入院会計", "correct": false },
-    { "label": "e", "text": "給食管理部門　―　物品在庫管理", "correct": false }
+    { "label": "a", "text": "データウェアハウス（DWH）は、データの倉庫という意味である", "correct": false },
+    { "label": "b", "text": "DWHにデータを格納する際は、形式を統一する必要がある", "correct": false },
+    { "label": "c", "text": "データマイニングやOLAPは、データウェアハウスに格納されたデータを分析する手法である", "correct": false },
+    { "label": "d", "text": "ナショナルデータベース（NDB）は、厚生労働省が構築している手術症例データベースである", "correct": true },
+    { "label": "e", "text": "NDBのデータは、研究目的での利用に限り、厚生労働省に申請することで提供される", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：a「医事部門 ― 統計作成」<br>
-・a：〇（Ⅲ264）<br>
-・b：× 臨床検査部門 → 放射線部門（Ⅲ265-266）<br>
-・c：× 放射線部門 → 人事・給与部門（Ⅲ269）<br>
-・d：× 診療情報管理部門 → 医事部門（Ⅲ263）<br>
-・e：× 給食管理部門 → 物品管理部門（Ⅲ269）`
+  "explanation_html": `✅ 正解：d「ナショナルデータベース（NDB）は、厚生労働省が構築している手術症例データベースである」<br>
+・a：〇（Ⅲ285）<br>
+・b：〇（Ⅲ285）<br>
+・c：〇（Ⅲ285）<br>
+・d：× 手術症例 → レセプトデータと特定健診・保健指導データ（Ⅲ286）<br>
+・e：〇（Ⅲ286）`
 },
  {
   "id": 20,
-  "title": "問20. 遠隔医療システムについて、正しいものを1つ選びなさい。",
+  "title": "問20. 医療情報の規格について、まちがっているものを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "遠隔画像診断は、テレコンサルテーションのことである", "correct": false },
-    { "label": "b", "text": "PHRは、Teleradiologyである", "correct": false },
-    { "label": "c", "text": "EHRは、Telepathologyである", "correct": false },
-    { "label": "d", "text": "遠隔手術支援は、Telesurgeryのことである", "correct": true },
-    { "label": "e", "text": "地域医療情報ネットワークは、Telemedicineである", "correct": false }
+    { "label": "a", "text": "XMLは、文書の電子的な処理に必要な情報を、タグを使って記述する", "correct": false },
+    { "label": "b", "text": "HL7は、病院内情報システム間の、医療情報交換規約である", "correct": false },
+    { "label": "c", "text": "DICOMは、インターネット用ソフトウェアに使われる記述言語である", "correct": true },
+    { "label": "d", "text": "SS-MIX2は、医療機関同士が、医療情報を交換・共有するための規約である", "correct": false },
+    { "label": "e", "text": "医薬品HOTコードマスターとICD10対応標準病名マスターは、厚生労働省標準規格である", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：d「遠隔手術支援は、Telesurgeryのことである」<br>
-・a：× テレコンサルテーション → テレラジオロジー（Ⅲ277）<br>
-　     ※テレコンサルテーションは遠隔地の専門医が診断し、医師にフィードバックすること<br>
-・b：× PHR（Personal Health Record）は個人の生涯にわたる健康情報を個人が収集管理する概念（Ⅲ289,533）<br>
-・c：× EHR（Electronic Health Record）は電子的な保健医療情報を複数の医療機関で共有する仕組み（Ⅲ289,533）<br>
-　※テレパソロジーは遠隔病理診断（Ⅲ278）<br>
-・d：〇（Ⅲ278）<br>
-・e：× 地域医療情報ネットワークは多数の医療機関が参加し情報共有を行う。<br>
-　     ※テレメディシン（遠隔医療）は診療現場とそこを支援する医療機関の間における1対1の連携（Ⅲ278）`
+  "explanation_html": `✅ 正解：c「DICOMは、インターネット用ソフトウェアに使われる記述言語である」<br>
+・a：〇（Ⅲ292）<br>
+・b：〇（Ⅲ292）<br>
+・c：× DICOM → XML。DICOMは医療用画像のための国際標準規格（Ⅲ293）<br>
+・d：〇（Ⅲ293）<br>
+・e：〇（Ⅲ297）`
 },
  {
   "id": 21,
-  "title": "問21. 変数の種類について、正しいものを1つ選びなさい。",
+  "title": "問21. 変数の種類について、まちがっているものを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "量的変数は、順序変数を含む", "correct": false },
-    { "label": "b", "text": "名義変数には、質的変数が含まれる", "correct": false },
-    { "label": "c", "text": "血液型は、連続変数である", "correct": false },
-    { "label": "d", "text": "年齢は、連続変数である", "correct": true },
-    { "label": "e", "text": "家族の人数は、名義変数である", "correct": false }
+    { "label": "a", "text": "連続データ、整数データは、量的データである", "correct": false },
+    { "label": "b", "text": "診断名は、質的データである", "correct": false },
+    { "label": "c", "text": "身長は、整数データである", "correct": true },
+    { "label": "d", "text": "がんのステージは、順序データである", "correct": false },
+    { "label": "e", "text": "体温は、連続データである", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：d「年齢は、連続変数である」<br>
-・a：× 順序変数は質的変数（Ⅲ312）<br>
-・b：× 正しくは「質的変数には名義変数が含まれる」（Ⅲ312）<br>
-・c：× 連続変数 → 名義変数（Ⅲ312）<br>
+  "explanation_html": `✅ 正解：c「身長は、整数データである」<br>
+・a：〇（Ⅲ312）<br>
+・b：〇（Ⅲ312）<br>
+・c：× 身長は整数データではなく、連続データ（Ⅲ312）<br>
 ・d：〇（Ⅲ312）<br>
-・e：× 名義変数 → 整数変数（Ⅲ312）`
+・e：〇（Ⅲ312）`
 },
  {
   "id": 22,
-  "title": "問22. あるクラスの学生12人の家族の人数は次の通りであった。<br>{1, 2, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5} <br>以下の選択肢から、正しいものを1つ選びなさい。",
+  "title": "問22. 代表値と散布度について、正しいものを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "左右対称の分布になる", "correct": false },
-    { "label": "b", "text": "外れ値がある", "correct": false },
-    { "label": "c", "text": "中央値は4である", "correct": true },
-    { "label": "d", "text": "最頻値は5である", "correct": false },
-    { "label": "e", "text": "範囲は12である", "correct": false }
+    { "label": "a", "text": "変数の分布がひとつ山で左右対称ならば、代表値は中央値、散布度は四分位数を用いる", "correct": false },
+    { "label": "b", "text": "中央値は、外れ値の影響を受けにくい", "correct": true },
+    { "label": "c", "text": "分数の2乗したものを、標準偏差とよぶ", "correct": false },
+    { "label": "d", "text": "標準偏差は、中央値とペアで用いることが多い", "correct": false },
+    { "label": "e", "text": "変動幅は、「最大値－最小値」で求められる", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：c「中央値は4である」<br>
-・a：× 左右対称 → 左に尾をひく分布（Ⅲ313, Ⅲ398）<br>
-・b：× ある → ない（Ⅲ319）<br>
-・c：〇（Ⅲ319）<br>
-・d：× 5 → 4（Ⅲ320）<br>
-・e：× 12 → 4（Ⅲ322）`
+  "explanation_html": `✅ 正解：b「中央値は、外れ値の影響を受けにくい」<br>
+・a：×（Ⅲ318）ひとつ山で左右対称ならば → ひとつ山ではない、または左右非対称ならば<br>
+・b：〇（Ⅲ320）<br>
+・c：×（Ⅲ321）標準偏差の2乗が分散である<br>
+・d：×（Ⅲ321）中央値 → 平均<br>
+・e：×（Ⅲ322）変動係数 → 範囲、変動係数は、標準偏差を平均で割った値`
 },
  {
   "id": 23,
-  "title": "問23. 代表値について、まちがっているものを1つ選びなさい。",
+  "title": "問23. 「Y＝b×X＋a」の関係について、正しいものを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "平均は、外れ値に影響されやすい", "correct": false },
-    { "label": "b", "text": "中央値は、非正規分布の中心を求めることができる", "correct": false },
-    { "label": "c", "text": "最頻値は、散布度の1つである", "correct": true },
-    { "label": "d", "text": "標準偏差は、元のデータと同じ単位になる", "correct": false },
-    { "label": "e", "text": "範囲は、「最大値－最小値」で求められる", "correct": false }
+    { "label": "a", "text": "変数Xは、予測変数である", "correct": false },
+    { "label": "b", "text": "aは、傾きである", "correct": false },
+    { "label": "c", "text": "X＝10のとき、Yは「b×10＋a」となる", "correct": true },
+    { "label": "d", "text": "曲線である", "correct": false },
+    { "label": "e", "text": "bが正の数の場合、Xの数が大きいほどYの値は小さくなる", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：c「最頻値は、散布度の1つである」<br>
-・a：〇（Ⅲ319）<br>
-・b：〇（Ⅲ319）<br>
-・c：× 散布度 → 代表値（Ⅲ320）<br>
-・d：〇（Ⅲ321）<br>
-・e：〇（Ⅲ322）`
+  "explanation_html": `✅ 正解：c「X＝10のとき、Yは『b×10＋a』となる」<br>
+・a：× 変数Xは説明変数（独立変数）、予測変数はY（Ⅲ341）<br>
+・b：× aは傾きではなく切片、傾きはb（Ⅲ341）<br>
+・c：〇（Ⅲ341）<br>
+・d：× 曲線ではなく直線（Ⅲ341）<br>
+・e：× 小さく → 大きく（Ⅲ341）`
 },
  {
   "id": 24,
-  "title": "問24. XとYの相関をrで表す場合に、まちがっているものを1つ選びなさい。",
+  "title": "問24. 推測統計について、まちがっているものを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "r＝－1.0となることはない", "correct": true },
-    { "label": "b", "text": "r＝0のとき、XとYは無相関である", "correct": false },
-    { "label": "c", "text": "r＝－0.7のとき、分布は右下がりとなる", "correct": false },
-    { "label": "d", "text": "r＝1のとき、すべての点は直線状に並んでいる", "correct": false },
-    { "label": "e", "text": "r＝0.8のとき、強い正の相関がある", "correct": false }
+    { "label": "a", "text": "知りたい対象の全体集合は、母集団である", "correct": false },
+    { "label": "b", "text": "全数調査を行う際は、無作為抽出を行う", "correct": true },
+    { "label": "c", "text": "母集団から抽出した標本の個体数を、標本サイズという", "correct": false },
+    { "label": "d", "text": "国勢調査は、全数調査の一例である", "correct": false },
+    { "label": "e", "text": "母集団における平均を、母平均という", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：a「r＝－1.0となることはない」<br>
-・a：× rの性質として「−1≦r≦+1」である（Ⅲ338）<br>
-・b：〇（Ⅲ338）<br>
-・c：〇（Ⅲ338）<br>
-・d：〇（Ⅲ338）<br>
-・e：〇（Ⅲ339）`
+  "explanation_html": `✅ 正解：b「全数調査を行う際は、無作為抽出を行う」<br>
+・a：〇（Ⅲ345）<br>
+・b：× 全数調査ではなく標本調査で無作為抽出を行う（Ⅲ345）<br>
+・c：〇（Ⅲ345）<br>
+・d：〇（Ⅲ345）<br>
+・e：〇（Ⅲ347）`
 },
  {
   "id": 25,
-  "title": "問25. 回帰直線「体重＝3×年齢＋4」について、正しいものを1つ選びなさい。",
+  "title": "問25. 次のうち、点推定ではないものを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "体重は、説明変数である", "correct": false },
-    { "label": "b", "text": "傾きは、4である", "correct": false },
-    { "label": "c", "text": "ある年齢を超えると、体重は変わらなくなる", "correct": false },
-    { "label": "d", "text": "10才以上の人は、34kg以下である", "correct": false },
-    { "label": "e", "text": "散布図が楕円状である場合は、右上がりとなる", "correct": true }
+    { "label": "a", "text": "母集団の出産時年齢を、平均で表す", "correct": false },
+    { "label": "b", "text": "母集団の年齢分布のばらつきを、標準偏差で表す", "correct": false },
+    { "label": "c", "text": "母集団の喫煙ありの母割合を、標本割合で表す", "correct": false },
+    { "label": "d", "text": "日本の出生体重の母平均を、95%信頼区間で表す", "correct": true },
+    { "label": "e", "text": "癌患者母集団の5年生存率を、標本による5年生存率で表す", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：e「散布図が楕円状である場合は、右上がりとなる」<br>
-・a：× 説明変数 → 予測変数（目的変数、従属変数）（Ⅲ341）<br>
-・b：× 傾き → 切片。傾きは3（Ⅲ341）<br>
-・c：× 変わらなくなる → 増え続ける（Ⅲ341）<br>
-・d：× 34kg以下 → 34kg以上（Ⅲ341）<br>
-・e：〇 教科書に記載は無いが、傾き＞0のとき右上がり、傾き＜0のとき右下がりとなる（Ⅲ342-343）`
+  "explanation_html": `✅ 正解：d「日本の出生体重の母平均を、95%信頼区間で表す」<br>
+・a：〇（Ⅲ349）点推定<br>
+・b：〇（Ⅲ349）点推定<br>
+・c：〇（Ⅲ349）点推定<br>
+・d：× 点推定は、ひとつの数値で表す推定。<br>
+       dは区間推定。<br>
+・e：〇（Ⅲ350）点推定`
 },
  {
   "id": 26,
-  "title": "問26. 仮説検定について、正しいものを1つ選びなさい。",
+  "title": "問26. 有意差検定について、まちがっているものを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "P値を求めてから、帰無仮説を設定する", "correct": false },
-    { "label": "b", "text": "有意水準は、標本から計算して求める", "correct": false },
-    { "label": "c", "text": "P値が有意水準より大きいとき、帰無仮説を採択する", "correct": false },
-    { "label": "d", "text": "有意水準を0.05と定めた有意差検定で、P値が0.028のとき対立仮説を採択する", "correct": true },
-    { "label": "e", "text": "男女の血糖値の母平均の検定における帰無仮説は、「男性の血糖値の母平均≠女性の血糖値の母平均」である", "correct": false }
+    { "label": "a", "text": "有意差検定は、推定の一種である", "correct": true },
+    { "label": "b", "text": "検定にあたっては、検定統計量を計算する", "correct": false },
+    { "label": "c", "text": "有意水準αは、多くの場合0.05に設定される", "correct": false },
+    { "label": "d", "text": "有意水準は、検定前に決めておく数値である", "correct": false },
+    { "label": "e", "text": "P値は、0≦P≦1である", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：d「有意水準を0.05と定めた有意差検定で、P値が0.028のとき対立仮説を採択する」<br>
-・a：× 最初に帰無仮説、対立仮説を設定する（Ⅲ354）<br>
-・b：× 有意水準 → 検定統計量。有意水準は検定前に決めておく（Ⅲ354）<br>
-・c：× 採択する → 保留する（Ⅲ354）<br>
-・d：〇（Ⅲ354）<br>
-・e：× ≠ → ＝。帰無仮説は「＝」を用いて表される（Ⅲ355）`
+  "explanation_html": `✅ 正解：a「有意差検定は、推定の一種である」<br>
+・a：× 推定ではなく仮説検定（Ⅲ352）<br>
+・b：〇（Ⅲ354）<br>
+・c：〇（Ⅲ355）<br>
+・d：〇（Ⅲ355）<br>
+・e：〇（Ⅲ358）`
 },
  {
   "id": 27,
-  "title": "問27. 仮説検定について、正しいものを1つ選びなさい。",
+  "title": "問27. グラフの特徴について、正しいものを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "Welchのt検定は、対応のある2群の母平均の差の検定で用いられる", "correct": false },
-    { "label": "b", "text": "受動喫煙のある群とない群の出生体重の母平均の差は、Kaplan-meier検定で行う", "correct": false },
-    { "label": "c", "text": "母割合の差は、Studentのt検定で行う", "correct": false },
-    { "label": "d", "text": "Pearsonのカイ2乗検定は、2群の母中央値の差の検定で用いられる", "correct": false },
-    { "label": "e", "text": "Fisherの正確検定は、2群の母割合の差の検定で用いられる", "correct": true }
+    { "label": "a", "text": "名義尺度の棒グラフは、左から右に並べる", "correct": false },
+    { "label": "b", "text": "棒グラフは、1つの集団の内部構造を一目で把握するのに有効である", "correct": false },
+    { "label": "c", "text": "折れ線グラフは、欠測値があると全体の傾向をつかみづらい", "correct": false },
+    { "label": "d", "text": "ヒストグラムは、横軸に量的データの階級をとる", "correct": true },
+    { "label": "e", "text": "箱ひげ図において、箱の上下のひげは四分位範囲を表す", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：e「Fisherの正確検定は、2群の母割合の差の検定で用いられる」<br>
-・a：× Welchのt検定 → 対応のあるt検定。Welchのt検定は2群の母分散が等しくない場合の母平均の差の検定で用いる（Ⅲ362）<br>
-・b：× Kaplan-meier検定 → Studentのt検定。Kaplan-meier法は生存率を求める手法（Ⅲ362, Ⅲ324）<br>
-・c：× Studentのt検定 → Pearsonのカイ2乗検定、Fisherの正確検定など（Ⅲ364）<br>
-・d：× 2群の母中央値の差の検定 → 2群の母割合の差の検定（Ⅲ364）<br>
-・e：〇（Ⅲ364）`
+  "explanation_html": `✅ 正解：d「ヒストグラムは、横軸に量的データの階級をとる」<br>
+・a：× 名義尺度ではなく順序尺度（Ⅲ388）<br>
+・b：× 棒グラフではなく円グラフが有効（Ⅲ392）<br>
+・c：× 欠測値は傾向をつかむ障害にならない。（Ⅲ396）<br>
+・d：〇（Ⅲ398）<br>
+・e：× 箱のひげは四分位範囲ではなく最大値と最小値（Ⅲ401）`
 },
  {
   "id": 28,
-  "title": "問28. グラフの用途について、まちがっているものを1つ選びなさい。",
+  "title": "問28. 下のグラフから読み取れる内容として、正しいものを1つ選びなさい（収縮期血圧の年齢別平均値）。<br><img src='scatter.png' alt='収縮期血圧の年齢別平均値' style='max-width:300px;'>"",
   "options": [
-    { "label": "a", "text": "棒グラフは、割合を表すのには適さない", "correct": true },
-    { "label": "b", "text": "帯グラフは、各構成部分の全体に占める割合を表すのに適している", "correct": false },
-    { "label": "c", "text": "折れ線グラフは、出生率や死亡率を年次別に表すのに適している", "correct": false },
-    { "label": "d", "text": "クモの巣グラフは、個体または集団の分類・仕分けを行うのに適している", "correct": false },
-    { "label": "e", "text": "ヒストグラムは、縦軸に度数や相対度数をとる", "correct": false }
+    { "label": "a", "text": "すべての年代で男性が女性を上回る", "correct": false },
+    { "label": "b", "text": "男性は40代以降、急激に高くなる", "correct": false },
+    { "label": "c", "text": "女性は、40代以降、横ばい傾向である", "correct": false },
+    { "label": "d", "text": "男性は、年代が上がるにつれて高くなる", "correct": true },
+    { "label": "e", "text": "女性は、110mmHGを下回ることは無い", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：a「棒グラフは、割合を表すのには適さない」<br>
-・a：× 度数・割合のどちらにも用いる（Ⅲ387）<br>
-・b：〇（Ⅲ393）<br>
-・c：〇（Ⅲ395）<br>
-・d：〇（Ⅲ398）<br>
-・e：〇（Ⅲ398）`
+  "explanation_html": `✅ 正解：d「男性は、年代が上がるにつれて高くなる」<br>
+・a：× 0代では女性が上回っている。（Ⅲ395）<br>
+・b：× 急激に高くなってはおらず、伸びはゆるやかになっている。（Ⅲ396）<br>
+・c：× 40代→50代（Ⅲ396）<br>
+・d：〇（Ⅲ397）<br>
+・e：× 30代で110mmHgを下回っている。（Ⅲ397）`
 },
  {
   "id": 29,
-  "title": "問29. 右の箱ひげ図について、正しいものを1つ選びなさい。",
+  "title": "問29. 厚生労働省が実施する統計調査について、正しいものを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "Aは、標準偏差である", "correct": false },
-    { "label": "b", "text": "中央値は、60である", "correct": false },
-    { "label": "c", "text": "範囲は、40である", "correct": true },
-    { "label": "d", "text": "第3四分位数は、55である", "correct": false },
-    { "label": "e", "text": "平均値は、70である", "correct": false }
+    { "label": "a", "text": "患者調査は、病院と一部の診療所が調査対象である", "correct": false },
+    { "label": "b", "text": "受療行動調査は、すべての医療施設が調査対象である", "correct": false },
+    { "label": "c", "text": "医療施設調査の調査内容は、患者の傷病状態である", "correct": false },
+    { "label": "d", "text": "病院数の調査内容は、医療施設の分布や整備の実態、機能等である", "correct": false },
+    { "label": "e", "text": "医療施設調査の調査周期は、毎月および3年ごとである", "correct": true }
   ],
-  "explanation_html": `
-✅ 正解：c「範囲は、40である」<br>
-・a：× 標準偏差 → 四分位範囲（Ⅲ401）<br>
-・b：× 60 → 70（Ⅲ401）<br>
-・c：〇（Ⅲ401）<br>
-・d：× 55 → 75（Ⅲ401）<br>
-・e：× 箱ひげ図では平均値は表されない（Ⅲ401）`
+  "explanation_html": `✅ 正解：e「医療施設調査の調査周期は、毎月および3年ごとである」<br>
+・a：× 患者調査ではなく病院報告（Ⅲ403）<br>
+・b：× 受療行動調査ではなく医療施設調査（静態調査）（Ⅲ403）<br>
+・c：× 医療施設調査ではなく患者調査（Ⅲ403）<br>
+・d：× 病院数ではなく医療施設調査（Ⅲ403）<br>
+・e：〇 動態調査が毎月、静態調査が3年ごと（Ⅲ403）`
 },
  {
   "id": 30,
-  "title": "問30. 医療評価指標と計算式について、まちがっている組み合わせを1つ選びなさい。",
+  "title": "問30. 医療評価指標について、正しいものを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "平均外来患者数　―　外来患者延べ数／外来診療延べ日数", "correct": false },
-    { "label": "b", "text": "外来／入院比 ―　1日平均外来患者数／1日平均入院患者数", "correct": false },
-    { "label": "c", "text": "平均病床利用率　―　（在院患者延べ数／病床延べ数）×100", "correct": false },
-    { "label": "d", "text": "病床回転率　―　365（または366）／平均在院日数", "correct": false },
-    { "label": "e", "text": "粗死亡率　―　（入院48時間以後死亡数／退院患者総数）×100", "correct": true }
+    { "label": "a", "text": "精死率は、入院後48時間未満の死亡を除いて算出する", "correct": true },
+    { "label": "b", "text": "病床あたりの年間の利用患者数は、平均病床利用率で示される", "correct": false },
+    { "label": "c", "text": "病床利用率は、平均在院日数と比例する", "correct": false },
+    { "label": "d", "text": "紹介率は、医学教育・研究の評価や患者家族の満足度を示す", "correct": false },
+    { "label": "e", "text": "癌性腫瘍の5年生存率は、自院への再入院率で示される", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：e「粗死亡率 ― （入院48時間以後死亡数／退院患者総数）×100」<br>
-・a：〇（Ⅲ407）<br>
-・b：〇（Ⅲ408）<br>
-・c：〇（Ⅲ411）<br>
-・d：〇（Ⅲ411）<br>
-・e：× 粗死亡率 → 精死亡率。<br>
-　     粗死亡率＝（死亡患者数／退院患者総数）×100（Ⅲ411）`
+  "explanation_html": `✅ 正解：a「精死率は、入院後48時間未満の死亡を除いて算出する」<br>
+・a：〇（Ⅲ411）<br>
+・b：× 平均病床利用率 → 病床回転率（Ⅲ411）<br>
+・c：× 比例 → 反比例（Ⅲ411）<br>
+・d：× 紹介率 → 剖検率（Ⅲ412-413）<br>
+・e：× 生存確認のための「予後調査」を行う。（Ⅲ414）`
 },
  {
   "id": 31,
-  "title": "問31. 診療情報の価値について、正しい組み合わせを1つ選びなさい。",
+  "title": "問31. マッケクレンが提唱した「診療記録の価値」に、含まれないものを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "患者にとっての価値　―　法的紛争での証拠資料", "correct": false },
-    { "label": "b", "text": "医師にとっての価値　―　病院マネジメントのための資料", "correct": false },
-    { "label": "c", "text": "病院にとっての価値　―　医療安全活動のための資料", "correct": true },
-    { "label": "d", "text": "公衆衛生上の価値　―　監査のための資料", "correct": false },
-    { "label": "e", "text": "医学研究上の価値　―　医学教育のための資料", "correct": false }
+    { "label": "a", "text": "法的防御上の価値", "correct": false },
+    { "label": "b", "text": "医学研究上の価値", "correct": false },
+    { "label": "c", "text": "医療安全上の価値", "correct": true },
+    { "label": "d", "text": "医師にとっての価値", "correct": false },
+    { "label": "e", "text": "公衆衛生上の価値", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：c「病院にとっての価値 ― 医療安全活動のための資料」<br>
-・a：× 患者にとっての価値 → 法的防衛上の価値（Ⅲ424）<br>
-・b：× 医師にとっての価値 → 病院にとっての価値（Ⅲ424）<br>
-・c：〇（Ⅲ425）<br>
-・d：× 公衆衛生上の価値 → 医療保険上の価値（Ⅲ425）<br>
-・e：× 医学研究上の価値 → 医師にとっての価値（Ⅲ425）`
+  "explanation_html": `✅ 正解：c「医療安全上の価値」<br>
+・a：〇（Ⅲ424-425）<br>
+・b：〇（Ⅲ424-425）<br>
+・c：× マッケクレンが提唱した価値には含まれない（Ⅲ424-425）<br>
+・d：〇（Ⅲ424-425）<br>
+・e：〇（Ⅲ424-425）`
 },
  {
   "id": 32,
-  "title": "問32. 個人情報保護について、まちがっているものを1つ選びなさい。",
+  "title": "問32. 医療に関連する法規について、正しいものを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "法令上の対象となるのは、生存する個人に限定されている", "correct": false },
-    { "label": "b", "text": "要配慮個人情報は、取得時に原則として本人の同意が必要である", "correct": false },
-    { "label": "c", "text": "オプトインとは、個人データの第三者提供を、本人が同意したとみなすことである", "correct": true },
-    { "label": "d", "text": "匿名加工情報は個人情報ではない", "correct": false },
-    { "label": "e", "text": "急病の場合は、個人情報の取得に本人の同意は必要ない", "correct": false }
+    { "label": "a", "text": "医療監視員による立入検査は、民事訴訟法に規定されている", "correct": false },
+    { "label": "b", "text": "弁護士法に基づく弁護士会からの照会により診療記録を提示する場合は、患者の同意は不要である", "correct": false },
+    { "label": "c", "text": "債務不履行に基づく損害賠償請求権の消滅時効は、10年である", "correct": true },
+    { "label": "d", "text": "刑法における秘密漏示罪は、医療関係者として、医師、歯科医師のみが該当する", "correct": false },
+    { "label": "e", "text": "医療法における秘密漏洩は、公務員については当てはまらない", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：c「オプトインとは、個人データの第三者提供を、本人が同意したとみなすことである」<br>
-・a：〇（Ⅲ454）<br>
-・b：〇（Ⅲ454）<br>
-・c：× オプトイン → オプトアウト（Ⅲ454）<br>
-・d：〇（Ⅲ455）<br>
-・e：〇（Ⅲ457）`
+  "explanation_html": `✅ 正解：c「債務不履行に基づく損害賠償請求権の消滅時効は、10年である」<br>
+・a：× 民事訴訟法ではなく医療法（Ⅲ443-444）<br>
+・b：× 診療記録を提示する際には患者の同意が必要（Ⅲ444）<br>
+・c：〇（Ⅲ447）<br>
+・d：× 医師・歯科医師の他に薬剤師、医薬品販売業者、助産師も該当（Ⅲ449）<br>
+・e：× 公務員については → 公務員以外については（Ⅲ449）`
 },
  {
   "id": 33,
-  "title": "問33. 診療録の開示について、まちがっているものを1つ選びなさい。",
+  "title": "問33. 個人情報の保護について、まちがっているものを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "医療従事者と患者の信頼関係を高めることが目的である", "correct": false },
-    { "label": "b", "text": "診療記録の開示には、診療記録の閲覧を含む", "correct": false },
-    { "label": "c", "text": "満15歳未満の未成年者は、患者本人が開示を求めることができない", "correct": false },
-    { "label": "d", "text": "開示の申立て書面に理由欄を設けるのは、不適切である", "correct": false },
-    { "label": "e", "text": "遺族として開示を求め得るのは、患者の配偶者、子供、父母のみである", "correct": true }
+    { "label": "a", "text": "雇用契約や就業規則における守秘義務に、離職後についても含めるべきである", "correct": false },
+    { "label": "b", "text": "従業員教育は、派遣労働者に対しても行うことが望ましい", "correct": false },
+    { "label": "c", "text": "医師個人や医局の端末に、個人情報を入れないよう徹底すべきである", "correct": true },
+    { "label": "d", "text": "技術的安全管理措置として、個人データに対するアクセス記録を保存すべきである", "correct": false },
+    { "label": "e", "text": "個人データの取り扱いを外部に委託する場合、委託契約に安全管理措置の内容を盛り込むべきである", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：e「遺族として開示を求め得るのは、患者の配偶者、子供、父母のみである」<br>
-・a：〇（Ⅲ476）<br>
-・b：〇（Ⅲ477）<br>
-・c：〇（Ⅲ478）<br>
-・d：〇（Ⅲ478）<br>
-・e：× 患者の配偶者、子供、父母に準ずる者やそれらの法定代理人も含まれる（Ⅲ479）`
+  "explanation_html": `✅ 正解：c「医師個人や医局の端末に、個人情報を入れないよう徹底すべきである」<br>
+・a：〇（Ⅲ464）<br>
+・b：〇（Ⅲ465）<br>
+・c：× 個人情報を入れない → 漏えいの危険性を認識させる（Ⅲ465）<br>
+・d：〇（Ⅲ467）<br>
+・e：〇（Ⅲ468）`
 },
  {
   "id": 34,
-  "title": "問34. 診療記録の記載について、まちがっているものを1つ選びなさい。",
+  "title": "問34. 診療録の種類と記載事項について、正しいものを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "傷病名の記載がある場合、治療内容の記載が必要である", "correct": false },
-    { "label": "b", "text": "診療情報管理士は、診療録の誤りを訂正し、完全な記録としなければならない", "correct": true },
-    { "label": "c", "text": "診療記録の点検を、入院中から実施することが必要である", "correct": false },
-    { "label": "d", "text": "事故時には、記録より処置を優先させる", "correct": false },
-    { "label": "e", "text": "事故時の記録には、本人及び家族の反応を記載する", "correct": false }
+    { "label": "a", "text": "主訴には、入院の直接の契機となった理由を記載する", "correct": false },
+    { "label": "b", "text": "現病歴には、全身の状態および各臓器の状態について記載する", "correct": false },
+    { "label": "c", "text": "入院診療計画書の作成と文書による説明は、義務とされている", "correct": true },
+    { "label": "d", "text": "入院診療計画書について、入院後3日以内に説明を行うこととされている", "correct": false },
+    { "label": "e", "text": "入院診療計画書について患者に説明後、原本を診療録に貼付することとされている", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：b「診療情報管理士は、診療録の誤りを訂正し、完全な記録としなければならない」<br>
-・a：〇（Ⅲ530）<br>
-・b：× 訂正し → 記載者に指摘し（Ⅲ531）<br>
-・c：〇（Ⅲ531）<br>
-・d：〇（Ⅲ532）<br>
-・e：〇（Ⅲ532）`
+  "explanation_html": `✅ 正解：c「入院診療計画書の作成と文書による説明は、義務とされている」<br>
+・a：× 主訴 → 入院目的（Ⅲ485）<br>
+・b：× 現病歴 → 現症および身体所見（Ⅲ486）<br>
+・c：〇（Ⅲ487）<br>
+・d：× 3日以内 → 7日以内（Ⅲ487）<br>
+・e：× 原本は患者に交付し、写しを診療録に貼付する（Ⅲ488）`
 },
  {
   "id": 35,
-  "title": "問35. 電子カルテの運用について、正しいものを1つ選びなさい。",
+  "title": "問35. 末位桁番号ファイリング法の特徴として、正しいものを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "EMRは、複数の医療機関で共有される電子的な保健医療情報である", "correct": false },
-    { "label": "b", "text": "EHRは、個人自らが管理する電子的な保健医療情報である", "correct": false },
-    { "label": "c", "text": "個人の社会生活で得た保健医療情報は、PHRである", "correct": true },
-    { "label": "d", "text": "電子署名は、存在証明である", "correct": false },
-    { "label": "e", "text": "タイムスタンプは、その当時に作成した本人によって署名されている", "correct": false }
+    { "label": "a", "text": "大量の連続番号の診療記録を抽出する作業が、容易にできる", "correct": false },
+    { "label": "b", "text": "ミスファイルの可能性が高い", "correct": false },
+    { "label": "c", "text": "保管棚を均等に使用できない", "correct": false },
+    { "label": "d", "text": "チェックデジットを除いた末桁を用いる", "correct": true },
+    { "label": "e", "text": "番号が連続した100冊の診療記録を取り出すのに便利である", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：c「個人の社会生活で得た保健医療情報は、PHRである」<br>
-・a：× 複数の医療機関で共有されるのはEHR。EMRは単独の医療機関で運用される（Ⅲ533）<br>
-・b：× 個人自らが管理するのはPHR。EHRは複数の医療機関で共有される（Ⅲ533）<br>
-・c：〇（Ⅲ533）<br>
-・d：× 電子署名 → タイムスタンプ。電子署名は本人証明（Ⅲ538）<br>
-・e：× タイムスタンプ → 電子署名。タイムスタンプはその当時からその文書が存在することを証明する（存在証明）（Ⅲ538）`
+  "explanation_html": `✅ 正解：d「チェックデジットを除いた末桁を用いる」<br>
+・a：× 連続番号順ファイリング法の特徴。<br>
+・b：× 連続番号順ファイリング法の特徴。<br>
+・c：× できない → 可能である<br>
+・d：〇（Ⅲ518）<br>
+・e：× 中間位桁番号ファイリング法の特徴。`
 },
  {
   "id": 36,
-  "title": "問36. 安全管理について、まちがっているものを1つ選びなさい。",
+  "title": "問36. 診療記録の保存について、まちがっているものを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "「リスクの把握」は、インシデント報告、有害事象報告などをもとに実施する", "correct": false },
-    { "label": "b", "text": "「分析・評価」においては、診療情報を活用した調査分析を行う", "correct": false },
-    { "label": "c", "text": "「対応」においては、再発防止のために実施記録の見直しを行う", "correct": false },
-    { "label": "d", "text": "病院管理者は、全ての死亡例を医療事故調査・支援センターへ報告すべきである", "correct": true },
-    { "label": "e", "text": "特定機能病院は、全ての死亡例について医療安全管理部門への報告と検証が義務である", "correct": false }
+    { "label": "a", "text": "利用頻度の低い診療記録を、インアクティブファイルという", "correct": false },
+    { "label": "b", "text": "すべての診療記録を現物保管する必要はない", "correct": false },
+    { "label": "c", "text": "紙の診療記録をデジタル化した場合においても、法的な保存期間を経過していない診療記録は廃棄できない", "correct": false },
+    { "label": "d", "text": "バージングとは、法的な保存期間を経過した診療記録を選別する作業である", "correct": true },
+    { "label": "e", "text": "バージングは、追い出し作業ともよばれている", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：d「病院管理者は、全ての死亡例を医療事故調査・支援センターへ報告すべきである」<br>
-・a：〇（Ⅲ549）<br>
-・b：〇（Ⅲ549）<br>
-・c：〇（Ⅲ549）<br>
-・d：× 全ての死亡例 → 医療事故と判断した場合に（Ⅲ549）<br>
-・e：〇（Ⅲ550）`
+  "explanation_html": `✅ 正解：d「バージングとは、法的な保存期間を経過した診療記録を選別する作業である」<br>
+・a：〇（Ⅲ519）<br>
+・b：〇（Ⅲ519）<br>
+・c：〇（Ⅲ519）<br>
+・d：× 法的な保存期間を経過した → 使用頻度の低い（Ⅲ520）<br>
+・e：〇（Ⅲ520）`
 },
  {
   "id": 37,
-  "title": "問37. DPCの影響調査について、正しい組み合わせを1つ選びなさい。",
+  "title": "問37. 紙文書のスキャンを、外来や病棟で行う場合の特徴として、まちがっているものを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "様式1　―　医科保険診療以外の診療の有無に係る情報", "correct": false },
-    { "label": "b", "text": "様式4　―　医科点数表に基づく出来高による診療報酬の算定情報", "correct": false },
-    { "label": "c", "text": "EF統合ファイル　―　診断群分類点数表により算定する包括評価点数", "correct": false },
-    { "label": "d", "text": "Dファイル　―　生年月日、カナ氏名、性別をもとに生成される一次共通ID", "correct": false },
-    { "label": "e", "text": "Hファイル　―　重症度、医療・看護必要度", "correct": true }
+    { "label": "a", "text": "作成または取得からスキャンまでに時間がかかる", "correct": true },
+    { "label": "b", "text": "電子カルテによる参照がすぐにできる", "correct": false },
+    { "label": "c", "text": "スキャンすべきでない文書が混ざりやすい", "correct": false },
+    { "label": "d", "text": "他患者の情報を混在したスキャンが起きやすい", "correct": false },
+    { "label": "e", "text": "スキャン後の文書の保管が徹底されない", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：e「Hファイル ― 重症度、医療・看護必要度」<br>
-・a：× 様式1 → 様式4（Ⅲ558）<br>
-・b：× 様式4 → EF統合ファイル（Ⅲ558）<br>
-・c：× EF統合ファイル → Dファイル（Ⅲ559）<br>
-・d：× Dファイル → Kファイル（Ⅲ559）<br>
-・e：〇（Ⅲ559）`
+  "explanation_html": `✅ 正解：a「作成または取得からスキャンまでに時間がかかる」<br>
+・a：× 中央で一元的にスキャンする場合の特徴（Ⅲ537）<br>
+・b：〇（Ⅲ537）<br>
+・c：〇（Ⅲ537）<br>
+・d：〇（Ⅲ537）<br>
+・e：〇（Ⅲ537）`
 },
  {
   "id": 38,
-  "title": "問38. 転帰について、正しいものを1つ選びなさい。",
+  "title": "問38. 診療録管理体制加算1に関する施設基準として、まちがっているものを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "転帰とは、原疾患に対して選択するものである", "correct": false },
-    { "label": "b", "text": "不変は、検査のみの場合にも使われる", "correct": false },
-    { "label": "c", "text": "退院後に容態が変化した場合、退院時の転帰を変更する", "correct": false },
-    { "label": "d", "text": "寛解とは、再発の可能性はあるが一時的に改善したものである", "correct": true },
-    { "label": "e", "text": "増悪とは、治療をしたが改善が見られないものである", "correct": false }
+    { "label": "a", "text": "過去3年間の手術記録が全て保管されている", "correct": false },
+    { "label": "b", "text": "診療録管理部門または診療記録管理委員会が設置されている", "correct": false },
+    { "label": "c", "text": "ICD4桁または5桁の疾病分類がなされている", "correct": false },
+    { "label": "d", "text": "年間の退院患者数2,000名ごとに1名以上、専任の常勤診療記録管理者を配置している", "correct": false },
+    { "label": "e", "text": "退院時要約が、全患者の9割以上について作成されている", "correct": true }
   ],
-  "explanation_html": `
-✅ 正解：d「寛解とは、再発の可能性はあるが一時的に改善したものである」<br>
-・a：× 必ずしも原疾患そのものに対してのものではない（Ⅲ560）<br>
-・b：× 不変 → その他（Ⅲ560）<br>
-・c：× 退院時の転帰は覆らない（Ⅲ560）<br>
-・d：〇（Ⅲ560）<br>
-・e：× 増悪 → 不変（Ⅲ560）`
+  "explanation_html": `✅ 正解：e「退院時要約が、全患者の9割以上について作成されている」<br>
+・a：〇（Ⅲ562）<br>
+・b：〇（Ⅲ562）<br>
+・c：〇（Ⅲ562）<br>
+・d：〇（Ⅲ562）<br>
+・e：× 全患者の9割以上 → 全ての患者（Ⅲ562）`
 },
  {
   "id": 39,
-  "title": "問39. 医師事務作業補助者について、正しいものを1つ選びなさい。",
+  "title": "問39. 医師事務作業補助者の業務について、まちがっているものを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "行政上の業務や医療機関の経営のためのデータ収集業務は、行ってもよい", "correct": false },
-    { "label": "b", "text": "DPCのコーディング業務や院内がん登録等の統計業務は、行ってもよい", "correct": false },
-    { "label": "c", "text": "文書作成業務専門の部屋で、業務を行うことはできない", "correct": false },
-    { "label": "d", "text": "研修は、36時間以上である", "correct": false },
-    { "label": "e", "text": "医師事務作業補助者を新たに配置してから6か月間は研修期間として、業務内容について必要な研修を行う", "correct": true }
+    { "label": "a", "text": "カンファレンスの準備作業は、業務に含まれる", "correct": false },
+    { "label": "b", "text": "病棟や外来以外の場所において、業務を行うことができる", "correct": false },
+    { "label": "c", "text": "業務を管理・改善するための責任者として、常勤の医療事務作業補助者を置くこととされている", "correct": true },
+    { "label": "d", "text": "研修内容には、電子カルテシステムやオーダリングシステムが含まれる", "correct": false },
+    { "label": "e", "text": "研修内容には、関連法規が含まれる", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：e「医師事務作業補助者を新たに配置してから6か月間は研修期間として、業務内容について必要な研修を行う」<br>
-・a：× 経営のためのデータ収集はできない（Ⅲ572）<br>
-・b：× DPCのコーディングを含む請求業務はできない（Ⅲ572）<br>
-・c：× できない → できる（Ⅲ572）<br>
-・d：× 36 → 32（Ⅲ573）<br>
+  "explanation_html": `✅ 正解：c「業務を管理・改善するための責任者として、常勤の医療事務作業補助者を置くこととされている」<br>
+・a：〇（Ⅲ572）<br>
+・b：〇（Ⅲ572）<br>
+・c：× 医師事務作業補助者の → 医師事務作業補助者以外の（Ⅲ573）<br>
+・d：〇（Ⅲ573）<br>
 ・e：〇（Ⅲ573）`
 },
  {
   "id": 40,
-  "title": "問40. がん登録について、正しいものを1つ選びなさい。",
+  "title": "問40. がん登録について、正しい組み合わせを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "がん登録等の推進に関する法律は、わが国のがん対策の基本である", "correct": false },
-    { "label": "b", "text": "全国がん登録の実施主体は、都道府県知事である", "correct": false },
-    { "label": "c", "text": "地域がん登録の実施主体は、学会や研究会である", "correct": false },
-    { "label": "d", "text": "院内がん登録では、標準登録様式に基づく登録が行われる", "correct": true },
-    { "label": "e", "text": "臓器がん登録は、法令によるがん登録である", "correct": false }
+    { "label": "a", "text": "全国がん登録 ― 都道府県知事が実施", "correct": false },
+    { "label": "b", "text": "法令によるがん登録 ― 全国がん登録、地域がん登録", "correct": false },
+    { "label": "c", "text": "地域がん登録 ― 学会や研究会が実施", "correct": true },
+    { "label": "d", "text": "臓器がん登録 ― 各医療機関が実施", "correct": false },
+    { "label": "e", "text": "院内がん登録 ― 標準登録様式", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：d「院内がん登録では、標準登録様式に基づく登録が行われる」<br>
-・a：× がん登録等の推進に関する法律 → がん対策基本法（Ⅲ574）<br>
-・b：× 都道府県知事 → 国（Ⅲ575）<br>
-・c：× 地域がん登録 → 臓器（別）がん登録。地域がん登録は都道府県が実施主体だったが現在は全国がん登録になった（Ⅲ576）<br>
-・d：〇（Ⅲ578）<br>
-・e：× 臓器がん登録 → 全国がん登録・院内がん登録（Ⅲ575）`
+  "explanation_html": `✅ 正解：c「地域がん登録 ― 学会や研究会が実施」<br>
+・a：× 都道府県知事 → 国（Ⅲ575）<br>
+・b：× 全国がん登録、地域がん登録 → 全国がん登録、院内がん登録（Ⅲ575）<br>
+・c：〇 学会や研究会 → 都道府県など。なお、地域がん登録は全国がん登録に一本化されつつある。（Ⅲ576）<br>
+・d：× 医療機関 → 学会や研究会（Ⅲ576）<br>
+・e：〇（Ⅲ578）`
 },
  {
   "id": 41,
-  "title": "問41. 人口統計について、まちがっているものを1つ選びなさい。",
+  "title": "問41. わが国の人口動態統計について、まちがっているものを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "静態統計と動態統計がある", "correct": false },
-    { "label": "b", "text": "静態統計の代表は、国勢調査である", "correct": false },
-    { "label": "c", "text": "動態統計の代表は、人口動態統計である", "correct": false },
-    { "label": "d", "text": "人口動態事象に、死産は含まれない", "correct": true },
-    { "label": "e", "text": "人口動態統計に、わが国ではオンライン報告システムが導入されている", "correct": false }
+    { "label": "a", "text": "当初の調査項目は、出生、死亡のみであった", "correct": false },
+    { "label": "b", "text": "人口動態調査は、統計法に基づく基幹統計調査である", "correct": false },
+    { "label": "c", "text": "疾病、傷害及び死因の統計分類基本分類表は、ICD-10の第1巻にある項目そのものである", "correct": false },
+    { "label": "d", "text": "死因分類表は、わが国の死因構造を概観する目的で作成された", "correct": false },
+    { "label": "e", "text": "疾病分類表は、大、小分類の2表からなる", "correct": true }
   ],
-  "explanation_html": `
-✅ 正解：d「人口動態事象に、死産は含まれない」<br>
-・a：〇（Ⅲ583）<br>
-・b：〇（Ⅲ583）<br>
-・c：〇（Ⅲ583）<br>
-・d：× 含まれない → 含まれる（Ⅲ584）<br>
-・e：〇（Ⅲ584）`
+  "explanation_html": `✅ 正解：e「疾病分類表は、大、小分類の2表からなる」<br>
+・a：〇（Ⅲ584）<br>
+・b：〇（Ⅲ585）<br>
+・c：〇（Ⅲ587）<br>
+・d：〇（Ⅲ588）<br>
+・e：× 大、小分類の2表 → 大、中、小分類の3表（Ⅲ592）`
 },
  {
   "id": 42,
-  "title": "問42. ICD-10の改正について、正しい組み合わせを1つ選びなさい。",
+  "title": "問42. ICD-10の構造について、まちがっているものを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "新たな用語の索引への導入　―　大改正", "correct": true },
-    { "label": "b", "text": "新たなコードの追加　―　小改正", "correct": false },
-    { "label": "c", "text": "コードの削除　―　小改正", "correct": false },
-    { "label": "d", "text": "コードの表現強化　―　大改正", "correct": false },
-    { "label": "e", "text": "コードの移動　―　小改正", "correct": false }
+    { "label": "a", "text": "約14,000もの項目がある", "correct": false },
+    { "label": "b", "text": "Bertillonの分類を基本として構成されている", "correct": true },
+    { "label": "c", "text": "アルファベットに続く2桁の数字は、主に部位を示す", "correct": false },
+    { "label": "d", "text": "分類軸は全体を一貫していない", "correct": false },
+    { "label": "e", "text": "第1巻の内容例示表、第2巻の総論、第3巻の索引表の3巻構成である", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：a「新たな用語の索引への導入 ― 大改正」<br>
+  "explanation_html": `✅ 正解：b「Bertillonの分類を基本として構成されている」<br>
 ・a：〇（Ⅲ600）<br>
-・b：× 小改正 → 大改正（Ⅲ600）<br>
-・c：× 小改正 → 大改正（Ⅲ600）<br>
-・d：× 大改正 → 小改正（Ⅲ600）<br>
-・e：× 小改正 → 大改正（Ⅲ600）`
+・b：× Bertillonの分類ではなくWilliam Farrの分類を基本としている（Ⅲ603）<br>
+・c：〇（Ⅲ604）<br>
+・d：〇（Ⅲ601）<br>
+・e：〇（Ⅲ602）`
 },
  {
   "id": 43,
-  "title": "問43. ICFの部門と構成要素について、まちがっているものを1つ選びなさい。",
+  "title": "問43. ICD-Oについて、正しいものを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "生活機能と障害は、第1部である", "correct": false },
-    { "label": "b", "text": "背景因子は、第1部の構成要素である", "correct": true },
-    { "label": "c", "text": "活動・参加は、第1部の構成要素である", "correct": false },
-    { "label": "d", "text": "環境因子は、第2部の構成要素である", "correct": false },
-    { "label": "e", "text": "個人因子は、第2部の構成要素である", "correct": false }
+    { "label": "a", "text": "悪性、良性、性状不詳がコードできる", "correct": true },
+    { "label": "b", "text": "原発性と続発性は、同じ表記となる", "correct": false },
+    { "label": "c", "text": "局在コードは、どのような性質の腫瘍であるかを表す", "correct": false },
+    { "label": "d", "text": "局在コードは、ICD-10コードと全て一致する", "correct": false },
+    { "label": "e", "text": "ICD-10とICD-Oでコードが一致する場合は、同じことを表す", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：b「背景因子は、第1部の構成要素である」<br>
-・a：〇（Ⅲ609）<br>
-・b：× 第1部 → 第2部（Ⅲ609）<br>
-・c：〇（Ⅲ609）<br>
-・d：〇（Ⅲ609）<br>
-・e：〇（Ⅲ609）`
+  "explanation_html": `✅ 正解：a「悪性、良性、性状不詳がコードできる」<br>
+・a：〇（Ⅲ616-617）<br>
+・b：× 原発性と続発性は別の表記（Ⅲ616-617）<br>
+・c：× 局在コードではなく形態コードが性質を表す（Ⅲ616-617）<br>
+・d：× 局在コードはICDコードと同様の表記となる場合も多いが、血液系や皮膚の腫瘍など異なる場合もある（Ⅲ616-617）<br>
+・e：× 同じではない。（Ⅲ616-617）`
 },
  {
   "id": 44,
-  "title": "問44. ICD-Oについて、正しいものを1つ選びなさい。",
+  "title": "問44. 原死因の選択ルールについて、正しいものを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "局在のみで新生物を表現する、派生分類である", "correct": false },
-    { "label": "b", "text": "局在コード（T分類）は、組織型を記す", "correct": false },
-    { "label": "c", "text": "局在コード（T分類）は、C00−D48で表現される", "correct": false },
-    { "label": "d", "text": "M−に続くコードの4桁目は、分化度を表す", "correct": false },
-    { "label": "e", "text": "M−に続くコードの5桁目は、性状を表す", "correct": true }
+    { "label": "a", "text": "ルールA〜ルールDは、選択ルールである", "correct": false },
+    { "label": "b", "text": "ルール1は、基本原則である", "correct": false },
+    { "label": "c", "text": "ルール2は、最初に記載された病態に帰着する上下の因果関係の記載がない場合に適用する", "correct": true },
+    { "label": "d", "text": "死亡診断書に「老衰」の記載があった場合、ルール3を適用する", "correct": false },
+    { "label": "e", "text": "ルールAは、選ばれた死因が軽微な病態であった場合に適用する", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：e「M−に続くコードの5桁目は、性状を表す」<br>
-・a：× 局在コード、形態コードの2体系により表現される（Ⅲ616）<br>
-・b：× 局在コード（T分類）→形態コードの4桁数字。局在コード（T分類）は部位を表す（Ⅲ616-617）<br>
-・c：× C00−D48 → C00−C80（Ⅲ617）<br>
-・d：× M-に続く4桁数字は新生物の組織型を表す。分化度は6桁目（Ⅲ618）<br>
-・e：〇（Ⅲ618）`
+  "explanation_html": `✅ 正解：c「ルール2は、最初に記載された病態に帰着する上下の因果関係の記載がない場合に適用する」<br>
+・a：× 選択ルール → 修正ルール。選択ルールはルール1〜ルール3。（Ⅲ626）<br>
+・b：× 基本原則 → 選択ルールの1つ（Ⅲ627）<br>
+・c：〇（Ⅲ628）<br>
+・d：× ルール3 → ルールA（Ⅲ628）<br>
+・e：× ルールA → ルールB（Ⅲ628）`
 },
  {
   "id": 45,
-  "title": "問45. 原死因について、まちがっているものを1つ選びなさい。",
+  "title": "問45. 主要病態の再選択ルールについて、まちがっているものを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "まず最初に、一般原則から適用する", "correct": false },
-    { "label": "b", "text": "選択ルールは、原死因の選択をやり直す方法である", "correct": false },
-    { "label": "c", "text": "選択ルールは、ルール1〜3である", "correct": false },
-    { "label": "d", "text": "修正ルールは、記載方法に問題がある場合に用いる", "correct": true },
-    { "label": "e", "text": "修正ルールは、ルールA〜Dである", "correct": false }
+    { "label": "a", "text": "原死因の選択ルールとは別物である", "correct": false },
+    { "label": "b", "text": "エピソードのなかで、最後に診断されたものを主要病態とする", "correct": false },
+    { "label": "c", "text": "主要症状、異常な所見、問題などを主要病態として選択する場合もある", "correct": false },
+    { "label": "d", "text": "再選択ルールは、5つである", "correct": false },
+    { "label": "e", "text": "疑診については、主要病態として選択しない", "correct": true }
   ],
-  "explanation_html": `
-✅ 正解：d「修正ルールは、記載方法に問題がある場合に用いる」<br>
-・a：〇（Ⅲ626）<br>
-・b：〇（Ⅲ626）<br>
-・c：〇（Ⅲ626）<br>
-・d：× 修正ルール → 選択ルール。修正ルールは、選択された原死因より他の診断の方が死亡統計の作成に相応しい場合に用いる（Ⅲ626-627）<br>
-・e：〇（Ⅲ627）`
+  "explanation_html": `✅ 正解：e「疑診については、主要病態として選択しない」<br>
+・a：〇（Ⅲ635）<br>
+・b：〇（Ⅲ635）<br>
+・c：〇（Ⅲ635）<br>
+・d：〇（Ⅲ636-637）<br>
+・e：× 疑診は確診として扱う（Ⅲ637）`
 },
  {
   "id": 46,
-  "title": "問46. ICD-10について、正しいものを1つ選びなさい。",
+  "title": "問46. ICD-10について、まちがっているものを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "医学用語集の一種である", "correct": false },
-    { "label": "b", "text": "原死因コーディングには使わない項目がある", "correct": true },
-    { "label": "c", "text": "ある疾病の慢性と急性の両方が掲載されている場合は、慢性を優先してコードする", "correct": false },
-    { "label": "d", "text": "索引表は、分類項目の設定を実用化するためのものである", "correct": false },
-    { "label": "e", "text": "ICD-10を統計用に利用するのは、人口動態調査のみである", "correct": false }
+    { "label": "a", "text": "世界各国が共通の分類表を用いることが、基本原則である", "correct": false },
+    { "label": "b", "text": "「内容例示表」だけを単独に用いて、疾病を分類することは困難である", "correct": false },
+    { "label": "c", "text": "二重分類とは、剣印（†）と星印（＊）を用いて分類するシステムのことである", "correct": true },
+    { "label": "d", "text": "剣印（†）は原疾患、星印（＊）は病態等を意味する", "correct": false },
+    { "label": "e", "text": "コーディング支援ソフトウェアを使用しても、ミスコーディングを防ぐことはできない", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：b「原死因コーディングには使わない項目がある」<br>
-・a：× 医学用語集 → 統計分類（Ⅲ650）<br>
-・b：〇（Ⅲ652）<br>
-・c：× 慢性 → 急性（Ⅲ653）<br>
-・d：× 索引表 → 内容例示表（Ⅲ654）<br>
-・e：× 人口動態調査のみ → 他に社会保険機関など（Ⅲ654）`
+  "explanation_html": `✅ 正解：c「二重分類とは、剣印（†）と星印（＊）を用いて分類するシステムのことである」<br>
+・a：〇（Ⅲ654）<br>
+・b：〇（Ⅲ655）<br>
+・c：× 単一のコードだけでは十分な情報を伝えられない場合、任意の追加コードで情報を補う方法もある。（Ⅲ660）<br>
+・d：〇（Ⅲ659）<br>
+・e：〇（Ⅲ667）`
 },
  {
   "id": 47,
-  "title": "問47. 複数病態分類、複合病態分類、二重分類について、正しいものを1つ選びなさい。",
+  "title": "問47. ICD-10のコーディングについて、正しいものを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "複数病態分類とは、関連する傷病名を1つにまとめてコーディングすることである", "correct": false },
-    { "label": "b", "text": "複合病態分類とは、全ての傷病名にそれぞれコーディングすることである", "correct": false },
-    { "label": "c", "text": "剣印（†）星印（＊）システムが導入されたのは、ICD-9からである", "correct": true },
-    { "label": "d", "text": "二重分類とは、主傷病名のみならず持病なども含めて分類するためのシステムである", "correct": false },
-    { "label": "e", "text": "剣印（†）の付いた分類は、単独で使用しない", "correct": false }
+    { "label": "a", "text": "薬剤耐性の病原体は、Bコードである", "correct": false },
+    { "label": "b", "text": "腎不全については、急性・慢性の区別なくコードされる", "correct": false },
+    { "label": "c", "text": "第XV章における直接産科死亡は、すべてに優先して分類する", "correct": true },
+    { "label": "d", "text": "妊娠期間において、正期産とは妊娠37週から満39週未満をいう", "correct": false },
+    { "label": "e", "text": "O80〜O84は、第XV章に分類される病態が記録されている場合のみ、一次疾病コーディングとして使用できる", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：c「剣印（†）星印（＊）システムが導入されたのは、ICD-9からである」<br>
-・a：× 複数病態分類 → 複合病態分類（Ⅲ656-657）<br>
-・b：× 複合病態分類 → 複数病態分類（Ⅲ656-657）<br>
-・c：〇（Ⅲ658）<br>
-・d：× 二重分類は単一のコードだけでは十分な情報を伝えられない場合に追加コードで情報を補う方法。持病については複数病態分類（Ⅲ656, Ⅲ660）<br>
-・e：× 剣印（†） → 星印（＊）（Ⅲ658）`
+  "explanation_html": `✅ 正解：c「第XV章における直接産科死亡は、すべてに優先して分類する」<br>
+a. × Ⅲ668 Bコード → Uコード（U82〜U85）<br>
+b. × Ⅲ706 腎不全は、急性腎不全と慢性腎臓病に整理され、慢性腎臓病については病期別分類が導入されている。<br>
+c. ○ Ⅲ709<br>
+d. × Ⅲ710 妊娠満37週から満39週未満 → 妊娠満37週から満42週未満<br>
+e. × Ⅲ711 記録されている場合 → 記録されていない場合`
 },
  {
   "id": 48,
-  "title": "問48. ICD-10について、まちがっているものを1つ選びなさい。",
+  "title": "問48. ICD-10のコーディングについて、まちがっているものを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "重症急性呼吸器症候群（SARS）、新型コロナウイルス感染症は、いずれもUコードである", "correct": false },
-    { "label": "b", "text": "インフルエンザは、Jコードを使用する", "correct": false },
-    { "label": "c", "text": "熱傷や外傷の後遺症で入退院が繰り返される場合は、ZコードではなくLコードを使用する", "correct": true },
-    { "label": "d", "text": "新生児は、週数より体重が優先される", "correct": false },
-    { "label": "e", "text": "国際比較や原死因のコードには、第XXI章は用いない", "correct": false }
+    { "label": "a", "text": "1つのサマリーにOとPの双方が記載されることはない", "correct": false },
+    { "label": "b", "text": "低出生体重は、2,500g未満である", "correct": false },
+    { "label": "c", "text": "過体重は、妊娠期間と関係なく、期間に比して過体重の胎児・新生児を指す", "correct": false },
+    { "label": "d", "text": "死亡の原因が第X章の病態である場合、死亡統計には第IX章を用いる", "correct": true },
+    { "label": "e", "text": "死因統計において、原死因の分類に5桁目は不要である", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：c「熱傷や外傷の後遺症で入退院が繰り返される場合は、ZコードではなくLコードを使用する」<br>
-・a：〇（Ⅲ668）<br>
-・b：〇（Ⅲ669）<br>
-・c：× ZコードではなくLコード → LコードではなくZコード（Ⅲ701）<br>
-・d：〇（Ⅲ717）<br>
-・e：〇（Ⅲ738）`
+  "explanation_html": `✅ 正解：d「死亡の原因が第X章の病態である場合、死亡統計には第IX章を用いる」<br>
+・a：〇（Ⅲ715）<br>
+・b：〇（Ⅲ716）<br>
+・c：〇（Ⅲ717）<br>
+・d：× 死亡統計には第ⅩⅨ章を用いる → 死亡統計には第ⅩⅩ章を用いる（Ⅲ730）<br>
+・e：〇（Ⅲ743）`
 },
  {
   "id": 49,
-  "title": "問49. 「脳内出血後遺症」のコードと一致しているものを1つ選びなさい。",
-  "options": [
-    { "label": "a", "text": "D", "correct": false },
-    { "label": "b", "text": "G", "correct": false },
-    { "label": "c", "text": "I", "correct": true },
-    { "label": "d", "text": "R", "correct": false },
-    { "label": "e", "text": "T", "correct": false }
-  ],
-  "explanation_html": `
-✅ 正解：c「I」<br>
-・I60–I69は「脳血管疾患」であり、その中のI69が「脳血管疾患の続発・後遺症」に該当する（Ⅲ695）`
-},
- {
-  "id": 50,
-  "title": "問50. 「心房中隔欠損症（先天性）」のコードと一致しているものを1つ選びなさい。",
-  "options": [
-    { "label": "a", "text": "I", "correct": false },
-    { "label": "b", "text": "J", "correct": false },
-    { "label": "c", "text": "O", "correct": false },
-    { "label": "d", "text": "P", "correct": false },
-    { "label": "e", "text": "Q", "correct": true }
-  ],
-  "explanation_html": `
-✅ 正解：e「Q」<br>
-・Q20–Q28は「循環器系の先天奇形」であり、その中のQ21.1が「心房中隔欠損症」に該当する（Ⅲ721）`
-},
- {
-  "id": 51,
-  "title": "問51. 「アルコール性肝炎」のコードと一致しているものを1つ選びなさい。",
+  "title": "問49. 「もやもや病」のコードと一致しているものを1つ選びなさい。",
   "options": [
     { "label": "a", "text": "F", "correct": false },
     { "label": "b", "text": "G", "correct": false },
-    { "label": "c", "text": "I", "correct": false },
-    { "label": "d", "text": "K", "correct": true },
-    { "label": "e", "text": "T", "correct": false }
+    { "label": "c", "text": "H", "correct": false },
+    { "label": "d", "text": "I", "correct": true },
+    { "label": "e", "text": "R", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：d「K」<br>
-・K70–K77は「肝疾患」であり、その中のK70が「アルコール性肝疾患」に該当する（Ⅲ700）`
+  "explanation_html": `✅ 正解：d「I」<br>
+「もやもや病」は第Ⅸ章のI60〜I69「脳血管疾患」（Ⅲ695）`
+},
+ {
+  "id": 50,
+  "title": "問50. 「肥満症（過剰カロリーによる）」のコードと一致しているものを1つ選びなさい。",
+  "options": [
+    { "label": "a", "text": "D", "correct": false },
+    { "label": "b", "text": "E", "correct": true },
+    { "label": "c", "text": "F", "correct": false },
+    { "label": "d", "text": "K", "correct": false },
+    { "label": "e", "text": "R", "correct": false }
+  ],
+  "explanation_html": `✅ 正解：b「E」<br>
+「肥満症（過剰カロリーによる）」は第Ⅳ章のE65〜E68「肥満（症）及びその他の過栄養＜過剰摂食＞」（Ⅲ683）`
+},
+ {
+  "id": 51,
+  "title": "問51. 「アレルギー性紫斑病」のコードと一致しているものを1つ選びなさい。",
+  "options": [
+    { "label": "a", "text": "D", "correct": true },
+    { "label": "b", "text": "E", "correct": false },
+    { "label": "c", "text": "L", "correct": false },
+    { "label": "d", "text": "M", "correct": false },
+    { "label": "e", "text": "N", "correct": false }
+  ],
+  "explanation_html": `✅ 正解：a「D」<br>
+「アレルギー性紫斑病」は第Ⅲ章のD65〜D69「凝固障害、紫斑病及びその他の出血性疾患」（Ⅲ680）`
 },
  {
   "id": 52,
-  "title": "問52. 「頭部の凍傷 組織壊死を伴う」のコードと一致しているものを1つ選びなさい。",
+  "title": "問52. 「分娩損傷による上腕神経叢麻痺」のコードと一致しているものを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "L", "correct": false },
+    { "label": "a", "text": "G", "correct": false },
     { "label": "b", "text": "M", "correct": false },
-    { "label": "c", "text": "R", "correct": false },
-    { "label": "d", "text": "T", "correct": true },
-    { "label": "e", "text": "X", "correct": false }
+    { "label": "c", "text": "O", "correct": false },
+    { "label": "d", "text": "P", "correct": true },
+    { "label": "e", "text": "S", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：d「T」<br>
-・T33–T35は「凍傷」であり、その中のT34.0が「頭部の組織壊死を伴う凍傷」に該当する（Ⅲ729）`
+  "explanation_html": `✅ 正解：d「P」<br>
+「分娩損傷による上腕神経叢麻痺」は第ⅩⅥ章のP10〜P15「出産外傷」（Ⅲ716）`
 },
  {
   "id": 53,
-  "title": "問53. 「原発性胃体部癌（組織型：腺癌）」の正しいコードを1つ選びなさい。",
+  "title": "問53. 「工事現場で作業中、チェーンソーで受傷。右側腹壁開放創」の正しいコードを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "C13.1　M8490/6", "correct": false },
-    { "label": "b", "text": "C16.2　M8140/3", "correct": true },
-    { "label": "c", "text": "C16.2　M8140/6", "correct": false },
-    { "label": "d", "text": "D13.1　M8140/0", "correct": false },
-    { "label": "e", "text": "D16.3　M8140/3", "correct": false }
+    { "label": "a", "text": "S31.1　V29.6", "correct": false },
+    { "label": "b", "text": "S31.1　V29.62", "correct": false },
+    { "label": "c", "text": "S31.1　W29", "correct": false },
+    { "label": "d", "text": "S31.1　W29.62", "correct": true },
+    { "label": "e", "text": "T31.1　W29.6", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：b「C16.2　M8140/3」<br>
-・C15–C26は「消化器の悪性新生物」であり、その中のC16.2が「胃体部癌」に該当する（Ⅲ674）<br>
-・M8140は腺癌で、性状コード/3は「原発性悪性新生物」（Ⅲ618）`
+  "explanation_html": `✅ 正解：d「S31.1　W29.62」<br>
+「右側腹壁開放創」は第ⅩⅨ章のS30〜S39「腹部、下背部、腰椎及び骨盤部の損傷」（Ⅲ728）<br>
+「工事現場で作業中、チェーンソーで受傷」は第ⅩⅩ章のW20〜W49「生物によらない機械的な力への曝露」<br>
+4桁目の発生場所コードに「工業用地域及び建築現場」の6、5桁目の活動コードに「収入を得るための活動中」の2をつける（Ⅲ731–732）`
 },
  {
   "id": 54,
-  "title": "問54. 「自転車でサイクリングロードをツーリング中に歩行者と衝突。脳挫傷、腹部挫傷」の正しいコードを1つ選びなさい。",
+  "title": "問54. 「胃噴門部癌による貧血」の正しいコードを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "S06.2　S30.9　V10.12", "correct": false },
-    { "label": "b", "text": "S06.21　S30.9　W10.40", "correct": false },
-    { "label": "c", "text": "T06.8　S06.20　S30.9　V10.40", "correct": true },
-    { "label": "d", "text": "T06.8　S06.21　S30.9　V10.40", "correct": false },
-    { "label": "e", "text": "T06.8　S06.20　S30.9　W01.40", "correct": false }
+    { "label": "a", "text": "C16.0†（M8010/6）", "correct": false },
+    { "label": "b", "text": "C16.0†（M8010/3）　D63.0*", "correct": true },
+    { "label": "c", "text": "C16.0†（M8010/6）　E63.0*", "correct": false },
+    { "label": "d", "text": "D16.0†（M8010/3）　D63.0*", "correct": false },
+    { "label": "e", "text": "D63.0†　C16.0*（M8010/6）", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：c「T06.8　S06.20　S30.9　V10.40」<br>
-・T06.8「多部位のその他の明示された損傷」：異なる部位の同じ型による多発性損傷はT00–T07を使用（Ⅲ726）<br>
-・S06.20「脳挫傷（開放創なし）」：問題文に「開放性」の記載がないため5桁細分類項目0「開放創を伴わない」をつける（Ⅲ726,729）<br>
-・S30.9「腹部挫傷」（S30–S39「腹部、下背部、腰椎及び骨盤部の損傷」（Ⅲ728））<br>
-・V10.40「自転車でサイクリングロードをツーリング中に歩行者と衝突」<br>
-　  → V10「交通事故により受傷した自転車乗員」＋V10–18用4桁細分類項目.4「路上交通事故により受傷した運転者」＋活動コード0「スポーツ活動中」（Ⅲ731,732）`
+  "explanation_html": `✅ 正解：b「C16.0†（M8010/3）　D63.0*」<br>
+・ICDの指示により剣印（†）星印（＊）をつける（Ⅲ658-660）<br>
+・「胃噴門部癌による貧血」の原因疾患「胃噴門部癌」は第Ⅱ章のC00〜C75「原発と記載された又は推定された、明示された部位の悪性新生物＜腫瘍＞」（Ⅲ674）<br>
+・性状コードは「原発性悪性新生物」の/3をつける（Ⅲ618）<br>
+・病態「癌による貧血」は第Ⅲ章のD60〜D64「無形成性貧血及びその他の貧血」（Ⅲ680）`
 },
  {
   "id": 55,
-  "title": "問55. 「低出生体重児　1,555g」の正しいコードを1つ選びなさい。",
+  "title": "問55. 「好中球減少症（抗腫瘍薬による）」の正しいコードを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "O80.0", "correct": false },
-    { "label": "b", "text": "P07.1b", "correct": true },
-    { "label": "c", "text": "Q07.0", "correct": false },
-    { "label": "d", "text": "R01.1", "correct": false },
-    { "label": "e", "text": "Z38.0", "correct": false }
+    { "label": "a", "text": "A70　Y43.3", "correct": false },
+    { "label": "b", "text": "C76.7　D70", "correct": false },
+    { "label": "c", "text": "D70　Y43.3", "correct": true },
+    { "label": "d", "text": "T70　Y43.3", "correct": false },
+    { "label": "e", "text": "Y43.3", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：b「P07.1b」<br>
-・P07.1「その他の低出産体重（児）」の中から、出産体重1500〜2499グラムの児を選択する（Ⅲ716-718）`
+  "explanation_html": `✅ 正解：c「D70　Y43.3」<br>
+・「好中球減少症」は第Ⅲ章のD70〜D77「血液及び造血器のその他の疾患」（Ⅲ680）<br>
+・また、原因が薬物又はその他の外因によって生じた場合は、任意に追加コードとして第XX章を用いることができる（Ⅲ680）。<br>
+・ことさらに、追加外因コードをつける。（「抗腫瘍薬による」 はY40–Y84「内科的及び外科的ケアの合併症」のうちY40–Y59「治療上の使用により有害作用を引き起こした薬物、薬剤及び生物学的製剤」（Ⅲ733））。（Ⅲ733）`
 },
  {
   "id": 56,
-  "title": "問56. 第XIV章に分類されないものを1つ選びなさい。",
+  "title": "問56. 第XVIII章に分類されないものを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "妊娠蛋白尿", "correct": true },
-    { "label": "b", "text": "原発性無月経", "correct": false },
-    { "label": "c", "text": "膀胱炎", "correct": false },
-    { "label": "d", "text": "急性卵管炎", "correct": false },
-    { "label": "e", "text": "ネフローゼ症候群", "correct": false }
+    { "label": "a", "text": "咳嗽", "correct": false },
+    { "label": "b", "text": "鼻出血", "correct": false },
+    { "label": "c", "text": "ショック", "correct": false },
+    { "label": "d", "text": "新生児発熱", "correct": true },
+    { "label": "e", "text": "高血糖症", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：a「妊娠蛋白尿」<br>
-・妊娠、分娩及び産じょくにおける浮腫、タンパク尿及び高血圧性障害は第XV章（O10–O16）に分類される（Ⅲ710）<br>
-・b〜eはいずれも第XIV章（尿生殖器系の疾患）に分類される`
+  "explanation_html": `✅ 正解：d「新生児発熱」<br>
+・周産期に発症した疾病は一部を除き全て第ⅩⅥ章に分類される（Ⅲ715）<br>
+・第ⅩⅧ章は「症状」「徴候」「検査の異常（病因不明）」および「診断名不確定」など（Ⅲ723）`
 },
  {
   "id": 57,
-  "title": "問57. 第IV章に分類されないものを1つ選びなさい。",
+  "title": "問57. 第XI章に分類されないものを1つ選びなさい。",
   "options": [
-    { "label": "a", "text": "下垂体機能亢進症", "correct": false },
-    { "label": "b", "text": "橋本病", "correct": false },
-    { "label": "c", "text": "肺サルコイドーシス", "correct": true },
-    { "label": "d", "text": "2型糖尿病性腎症", "correct": false },
-    { "label": "e", "text": "高カリウム血症", "correct": false }
+    { "label": "a", "text": "急性A型肝炎（肝性昏睡を伴う）", "correct": true },
+    { "label": "b", "text": "口内炎", "correct": false },
+    { "label": "c", "text": "アカラシア", "correct": false },
+    { "label": "d", "text": "大腸ポリープ", "correct": false },
+    { "label": "e", "text": "非アルコール性脂肪肝", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：c「肺サルコイドーシス」<br>
-・「免疫機構の障害」は第Ⅲ章（D80–D89）<br>
-・サルコイドーシスの原因は不明であるが、慢性の免疫疾患（何らかの抗原に対する免疫反応による）と考えられている。`
+  "explanation_html": `✅ 正解：a「急性A型肝炎（肝性昏睡を伴う）」<br>
+・「急性A型肝炎」は第Ⅰ章のB15〜B19「ウイルス性肝炎」に分類される（Ⅲ669）<br>
+・一方、ウイルス性以外の肝炎（アルコール性、薬物性など）は第Ⅺ章のK70〜K77「肝疾患」に含まれる（Ⅲ700）`
 },
  {
   "id": 58,
-  "title": "問58. 原死因を1つ選びなさい。<br>　　Ⅰ（ア）外傷性脳出血<br>　　  　（イ）脳挫傷<br>　　　　（ウ）肋骨多発骨折<br>　　　　（エ）乗馬の練習中に馬から転落",
+  "title": "問58. 原死因を1つ選びなさい。<br>Ⅰ（ア）肝硬変<br> （イ）気管支炎及び気管支拡張症<br> （ウ）アテローム粥状硬化症",
   "options": [
-    { "label": "a", "text": "外傷性脳出血", "correct": false },
-    { "label": "b", "text": "脳挫傷", "correct": false },
-    { "label": "c", "text": "肋骨多発骨折", "correct": false },
-    { "label": "d", "text": "多発性髄膜炎", "correct": false },
-    { "label": "e", "text": "乗馬の練習中に馬から転落", "correct": true }
+    { "label": "a", "text": "肝硬変", "correct": true },
+    { "label": "b", "text": "気管支炎", "correct": false },
+    { "label": "c", "text": "気管支拡張症", "correct": false },
+    { "label": "d", "text": "アテローム粥状硬化症", "correct": false },
+    { "label": "e", "text": "気管支炎及び気管支拡張症", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：e「乗馬の練習中に馬から転落」<br>
-・原死因は死亡に至る一連の事象を最初に引き起こした原因を指す（Ⅲ627-634）<br>
-・損傷（外傷性疾患）では、外因（事故・災害など）を原死因として選択する（Ⅲ740-750）<br>
-・一般原則。損傷では外因を選択する。<br>
-・なお、原死因の分類では5桁目は付けなくてもよい（Ⅲ743）`
+  "explanation_html": `✅ 正解：a「肝硬変」<br>
+・ルール2：最初に記載された病態に帰着する上下の因果関係がないため、最初に記載された「肝硬変」を原死因として選ぶ（Ⅲ625-634, Ⅲ740-747）`
 },
  {
   "id": 59,
-  "title": "問59. 原死因を1つ選びなさい。<br>　　Ⅰ（ア）老衰および臥床性肺炎<br>　　　（イ）脳卒中<br>　　Ⅱ 陥入爪",
+  "title": "問59. 原死因を1つ選びなさい。<br>Ⅰ（ア）脳内出血<br> （イ）高血圧<br> （ウ）アルドステロン症<br> （エ）副腎腺腫<br><br>Ⅱ　前立腺癌",
   "options": [
-    { "label": "a", "text": "老衰", "correct": false },
-    { "label": "b", "text": "臥床性肺炎", "correct": false },
-    { "label": "c", "text": "脳卒中", "correct": true },
-    { "label": "d", "text": "陥入爪", "correct": false },
-    { "label": "e", "text": "老衰および臥床性肺炎", "correct": false }
+    { "label": "a", "text": "脳内出血", "correct": false },
+    { "label": "b", "text": "高血圧", "correct": false },
+    { "label": "c", "text": "アルドステロン症", "correct": false },
+    { "label": "d", "text": "副腎腺腫", "correct": true },
+    { "label": "e", "text": "前立腺癌", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：c「脳卒中」<br>
-・ルール2では老衰が選ばれるが、ルールAによりこれを無視して一般原則を適用する（Ⅲ627-634）<br>
-・一般原則により、死亡に至った一連の事象を最初に引き起こした原因として「脳卒中」が原死因となる（Ⅲ740-750）`
+  "explanation_html": `✅ 正解：d「副腎腺腫」<br>
+・一般原則により、（エ）が（ア）〜（ウ）のすべての病態を引き起こす可能性があるため原死因として選択する（Ⅲ625-634, Ⅲ740-747）`
 },
  {
   "id": 60,
-  "title": "問60. 次の要約症例を読んで、選択肢より正しい組み合わせを1つ選びなさい。<br>55歳男性。以前から胆石症を指摘されていた。右季肋部痛により受診。手術を目的に入院となる。ERCP施行。胆石あり。胃痛あり。GIF施行し慢性胃炎と診断。腹腔鏡下胆嚢摘出術施行し、胆嚢炎を伴う胆石症と診断。<br>選択肢の表示=主傷病名/副傷病名/主医療行為/副医療行為",
+  "title": "問60. 次の要約症例を読んで、選択肢より正しい組み合わせを1つ選びなさい。<br>既往歴：○才；痛風。○才；S状結腸癌でS状結腸切除術施行。外来にてフォローアップ。<br>現病歴：今回、頭痛、吐き気を訴えたため、頭部CT施行したところ、前頭葉に低吸収域を認めたため、脳転移の疑いで入院。脳転移と診断し、放射線治療を開始した。入院中、軽度の褥瘡を認め、軟膏を塗布した。○月○日退院。<br><br>選択肢の表示＝主傷病名 / 副傷病名1 / 副傷病名2 / 副傷病名3	/ 主医療行為",
   "options": [
-    { "label": "a", "text": "胆嚢炎を伴う胆石症／慢性胃炎／腹腔鏡下胆嚢摘出術／ERCP, GIF", "correct": true },
-    { "label": "b", "text": "慢性胃炎／胆嚢炎を伴う胆石症／腹腔鏡下胆嚢摘出術／ERCP, GIF", "correct": false },
-    { "label": "c", "text": "胆嚢炎／慢性胃炎／ERCP, GIF／腹腔鏡下胆嚢摘出術", "correct": false },
-    { "label": "d", "text": "胆嚢炎／慢性胃炎／腹腔鏡下胆嚢摘出術／ERCP, GIF", "correct": false },
-    { "label": "e", "text": "胆嚢炎を伴う胆石症／慢性胃炎／ERCP, GIF／腹腔鏡下胆嚢摘出術", "correct": false }
+    { "label": "a", "text": "S状結腸癌　/ 脳転移　/ 痛風　/ 褥瘡　/ 放射線照射", "correct": false },
+    { "label": "b", "text": "S状結腸癌　/ 脳転移　/ 褥瘡　/ S状結腸の欠損　/ 頭部CT", "correct": false },
+    { "label": "c", "text": "脳転移　/ 褥瘡　/ S状結腸癌の既往　/ S状結腸の欠損　/ 放射線照射", "correct": true },
+    { "label": "d", "text": "S状結腸癌の既往　/ 脳転移　/ 褥瘡　/ S状結腸の欠損　/ 軟膏塗布", "correct": false },
+    { "label": "e", "text": "脳転移　/ S状結腸癌の既往　/ 痛風　/ 褥瘡　/ 軟膏塗布", "correct": false }
   ],
-  "explanation_html": `
-✅ 正解：a「胆嚢炎を伴う胆石症／慢性胃炎／腹腔鏡下胆嚢摘出術／ERCP, GIF」<br>
-・主傷病名は、医療資源を最も投入した「胆嚢炎を伴う胆石症」（Ⅲ700）<br>
-・胆嚢炎と胆石症は互いに関連しており、複合病態分類がとられる（Ⅲ657）<br>
-・主傷病名に対応する主医療行為として「腹腔鏡下胆嚢摘出術」を選択する`
+  "explanation_html": `✅ 正解：c「脳転移　褥瘡　S状結腸癌の既往　S状結腸の欠損　放射線照射」<br>
+・主傷病名は、最も医療資源として大きい「放射線照射」に対応した「脳転移」を選択（Ⅲ738-739）<br>
+・S状結腸癌については「再発」の記載が無いため治療済みと考え「既往歴」とする（第XXⅠ章）<br>
+・切除術施行の記載から「欠損」を選択（第XXⅠ章）`
 }
+
 ];
+
+
 
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -1174,3 +1181,14 @@ render();
 </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
