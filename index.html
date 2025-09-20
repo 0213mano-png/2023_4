@@ -1,55 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>2023年 第3回診療情報管理士模擬試験 専門分野</title>
+<title>2023年 第2回診療情報管理士模擬試験 専門分野</title>
 <style>
-  <script>
-function render() {
-  const app = document.getElementById('app');
-  app.innerHTML = "";
-
-  DATA.forEach(q => {
-    const card = document.createElement('div');
-    card.className = 'card';
-
-    // 問題文
-    const title = document.createElement('h2');
-    title.textContent = q.title;
-    card.appendChild(title);
-
-    // 選択肢
-    const optionsDiv = document.createElement('div');
-    optionsDiv.className = 'options';
-    q.options.forEach(opt => {
-      const btn = document.createElement('button');
-      btn.textContent = opt.label + "．" + opt.text;
-      btn.onclick = () => {
-        if (opt.correct) {
-          btn.classList.add('correct');
-        } else {
-          btn.classList.add('incorrect');
-        }
-        explanation.style.display = "block";
-      };
-      optionsDiv.appendChild(btn);
-    });
-    card.appendChild(optionsDiv);
-
-    // 解説
-    const explanation = document.createElement('div');
-    explanation.className = 'explanation';
-    explanation.innerHTML = q.explanation_html;
-    card.appendChild(explanation);
-
-    app.appendChild(card);
-  });
-}
-
-// ページ読み込み時に表示
-window.onload = render;
-</script>
-
   body {
     background-color: #fdfdfd;     /* 明るい背景 */
     color: #333;                   /* 少し柔らかい文字色 */
@@ -126,7 +81,7 @@ window.onload = render;
 </style>
 </head>
 <body>
-<h1>2023年 第3回診療情報管理士模擬試験 専門分野</h1>
+<h1>2023年 第2回診療情報管理士模擬試験 専門分野</h1>
 <div>
   <p>※回答解説中のⅠ,Ⅱ,ⅢはそれぞれテキストⅠ,Ⅱ,Ⅲを表す</p>
 </div>
@@ -1127,7 +1082,6 @@ e. × Ⅲ711 記録されている場合 → 記録されていない場合`
 }
 ];
 
-
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -1225,8 +1179,6 @@ render();
 </script>
 </body>
 </html>
-
-
 
 
 
